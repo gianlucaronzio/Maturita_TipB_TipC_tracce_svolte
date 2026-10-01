@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vademecum Tipologia B e C — Prima Prova</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#f4ecd8;
+  --parchment-dark:#ece0c4;
+  --ink:#3a2f22;
+  --ink-soft:#5c4d3a;
+  --gold:#b8912f;
+  --gold-dark:#8f6f22;
+  --card:#fffdf6;
+  --border:#d9c691;
+  --green:#4d7a3a;
+  --red:#a4442b;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--parchment);
+  background-image: radial-gradient(circle at 20% 10%, rgba(184,145,47,0.08), transparent 40%),
+                     radial-gradient(circle at 80% 90%, rgba(184,145,47,0.08), transparent 40%);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.6;
+  padding-bottom:60px;
+}
+header{
+  text-align:center;
+  padding:40px 20px 24px;
+  border-bottom:3px double var(--gold);
+  background:var(--parchment-dark);
+}
+header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6em;
+  margin:0 0 6px;
+  color:var(--gold-dark);
+  font-weight:700;
+}
+header p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:1.05em;
+}
+.badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:4px 14px;
+  border:1px solid var(--gold);
+  border-radius:20px;
+  font-size:0.85em;
+  color:var(--gold-dark);
+  background:#fffaf0;
+}
+nav{
+  max-width:1000px;
+  margin:24px auto 0;
+  padding:0 16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+}
+nav button{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:0.95em;
+  padding:10px 18px;
+  border:1px solid var(--gold);
+  background:var(--card);
+  color:var(--ink);
+  border-radius:8px 8px 0 0;
+  cursor:pointer;
+  transition:all .15s;
+}
+nav button:hover{background:#fbf3de;}
+nav button.active{
+  background:var(--gold);
+  color:#fff;
+  border-color:var(--gold-dark);
+}
+main{
+  max-width:1000px;
+  margin:0 auto;
+  padding:20px 16px 40px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:22px 24px;
+  margin-bottom:22px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+.card h2{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--gold-dark);
+  font-size:1.6em;
+  margin-top:0;
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+}
+.step{
+  display:flex;
+  gap:14px;
+  margin-bottom:16px;
+  align-items:flex-start;
+}
+.step-num{
+  flex:0 0 auto;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--gold);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1em;
+}
+.step-body h4{margin:0 0 4px;font-size:1.05em;}
+.step-body p{margin:0;color:var(--ink-soft);font-size:0.95em;}
+.connettivi{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.connettivi span{
+  background:#fbf3de;border:1px solid var(--border);
+  padding:4px 10px;border-radius:6px;font-size:0.85em;color:var(--ink-soft);
+}
+.year-block{margin-bottom:30px;}
+.year-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2em;color:var(--gold-dark);
+  border-bottom:2px solid var(--gold);
+  padding-bottom:6px;margin-bottom:6px;
+}
+.year-sub{color:var(--ink-soft);font-size:0.9em;margin-bottom:18px;}
+.tema-card{
+  border:1px solid var(--border);border-radius:10px;
+  background:var(--card);margin-bottom:18px;overflow:hidden;
+}
+.tema-head{
+  padding:16px 20px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--parchment-dark);
+}
+.tema-head:hover{background:#e6d9ae;}
+.tema-head .tipo-badge{
+  font-size:0.75em;font-weight:700;padding:3px 10px;border-radius:12px;
+  color:#fff;margin-right:10px;white-space:nowrap;
+}
+.badge-B{background:#8f6f22;}
+.badge-C{background:#6b7f3f;}
+.tema-head-text{flex:1;}
+.tema-head-text .fonte{
+  display:block;font-size:0.85em;color:var(--ink-soft);font-weight:400;margin-top:2px;
+}
+.chevron{font-size:1.2em;color:var(--gold-dark);transition:transform .2s;}
+.tema-body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 22px;}
+.tema-body.open{max-height:8000px;padding:6px 22px 22px;}
+.tema-body h4{
+  font-family:'Cormorant Garamond',serif;font-size:1.2em;color:var(--gold-dark);margin:16px 0 8px;
+}
+.tema-body p{margin:0 0 12px;}
+.svolgimento{
+  background:#fbf7ea;border-left:3px solid var(--gold);
+  padding:14px 18px;font-size:0.97em;border-radius:0 6px 6px 0;
+}
+.commento ul, .domande ol{margin:0;padding-left:20px;}
+.commento li, .domande li{margin-bottom:6px;color:var(--ink-soft);}
+.domande{background:#f6f0e0;border-radius:6px;padding:12px 16px;}
+.note-box{
+  background:#f1f7ea;border:1px solid #b9cf9a;border-radius:8px;
+  padding:14px 18px;font-size:0.92em;margin-bottom:24px;color:#3d4a2c;
+}
+.note-box a{color:#3d4a2c;font-weight:600;}
+.checklist{list-style:none;padding:0;margin:0;}
+.checklist li{
+  padding:10px 14px;border:1px solid var(--border);border-radius:6px;margin-bottom:8px;
+  background:#fffaf0;display:flex;gap:10px;align-items:flex-start;
+}
+.checklist input{margin-top:4px;}
+table.grid{width:100%;border-collapse:collapse;margin-top:10px;font-size:0.92em;}
+table.grid th,table.grid td{border:1px solid var(--border);padding:8px 10px;text-align:left;}
+table.grid th{background:var(--parchment-dark);}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;}
+@media(max-width:640px){.compare{grid-template-columns:1fr;}}
+.compare .bad, .compare .good{border-radius:8px;padding:12px 14px;font-size:0.92em;}
+.compare .bad{background:#fbeae5;border:1px solid #e0b6a6;}
+.compare .good{background:#eaf3e2;border:1px solid #b9cf9a;}
+.compare .lab{font-weight:700;display:block;margin-bottom:4px;}
+.compare .bad .lab{color:var(--red);}
+.compare .good .lab{color:var(--green);}
+.quiz-box{margin-top:18px;background:#fdfaf1;border:1px dashed var(--gold);border-radius:8px;padding:16px 18px;}
+.quiz-box h4{margin-top:0;}
+.quiz-q{margin-bottom:14px;}
+.quiz-q p.qtext{font-weight:600;margin:0 0 6px;}
+.quiz-q label{
+  display:block;padding:6px 10px;border:1px solid var(--border);border-radius:6px;
+  margin-bottom:5px;background:#fff;cursor:pointer;font-size:0.93em;
+}
+.quiz-q label:hover{background:#fbf3de;}
+.quiz-q label.correct{background:#e2f0d6;border-color:var(--green);}
+.quiz-q label.wrong{background:#f6dcd4;border-color:var(--red);}
+.quiz-btn{
+  background:var(--gold);color:#fff;border:none;padding:9px 18px;border-radius:6px;
+  font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;
+}
+.quiz-btn:hover{background:var(--gold-dark);}
+.quiz-result{margin-top:10px;font-weight:600;}
+.source-tag{
+  display:inline-block;font-size:0.75em;background:#e7dcc0;color:var(--ink-soft);
+  padding:2px 8px;border-radius:10px;margin-left:6px;
+}
+footer{text-align:center;color:var(--ink-soft);font-size:0.8em;margin-top:30px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vademecum passo dopo passo</h1>
+  <p>Tipologia B e Tipologia C della Prima Prova — Esame di Stato</p>
+  <span class="badge">Percorso guidato per il Liceo Linguistico — 5ª classe</span>
+</header>
+
+<nav id="nav"></nav>
+<main id="main"></main>
+
+<footer>Materiale didattico ad uso interno — Istituto Omnicomprensivo Europeo di Arconate e Buscate</footer>
+
+<script>
+const anni = ["2023","2024","2025","2026"];
+
+const dati = {
+"2023": [
+  {
+    numero:"B1", tipo:"B", titolo:"L'idea di Nazione: dato naturale o scelta quotidiana?",
+    fonte:"Federico Chabod, «L'idea di Nazione» — traccia ufficiale Tipologia B, Esame di Stato 2023 (fonte: Ministero dell'Istruzione e del Merito, archivio Esame di Stato, istruzione.it)",
+    guida:"Lo storico Federico Chabod mette a confronto due concezioni di nazione: quella naturalistica (lingua, territorio, stirpe comune) e quella volontaristica, secondo cui la nazione è una scelta consapevole e quotidiana di appartenenza.",
+    domande:[
+      "Quali sono le due concezioni di nazione messe a confronto nel testo?",
+      "In che senso la nazione, nella visione volontaristica, sarebbe un «plebiscito di tutti i giorni»?",
+      "Quali difficoltà pone, nelle società plurali di oggi, una concezione di nazione fondata solo su elementi naturali?",
+      "Con quali argomenti si potrebbe sostenere una posizione intermedia tra le due concezioni?"
+    ],
+    metodo:"Quando il testo-guida propone una dicotomia storica (qui naturalistica/volontaristica), usala come struttura portante: presenta entrambe le posizioni, poi prendi le distanze in modo motivato.",
+    testo:`Che cosa rende un insieme di persone una «nazione»? Federico Chabod distingue due risposte storiche a questa domanda: da un lato la concezione naturalistica, di matrice tedesca, secondo cui la nazione nasce da elementi oggettivi come la lingua, il territorio, la stirpe comune; dall'altro la concezione volontaristica, di origine francese, per cui la nazione è invece una scelta quotidiana, un «plebiscito di tutti i giorni», per usare la celebre espressione di Ernest Renan.
+
+Credo che questa seconda visione sia oggi la più utile per comprendere le società contemporanee, sempre più plurali dal punto di vista linguistico, religioso ed etnico. Se la nazione fosse definita solo da fattori naturali immutabili, molte persone che vivono, lavorano e si sentono parte di un Paese senza condividerne le origini etniche ne resterebbero automaticamente escluse.
+
+Si potrebbe obiettare che una nazione fondata solo sulla volontà rischi di essere troppo debole, priva di radici capaci di tenere unita la comunità nei momenti difficili. È un'osservazione legittima: la sola adesione volontaria, senza memoria condivisa né simboli comuni, può risultare fragile.
+
+Per questo penso che la soluzione più equilibrata unisca le due prospettive: una memoria storica e culturale condivisa, ma aperta a chi sceglie di farne parte, non riservata a chi vi nasce per caso. È questa, mi sembra, l'idea di nazione più adatta a una cittadinanza consapevole nel mondo di oggi.`,
+    commento:[
+      "Impostare il B come confronto tra due concezioni storiche prima di scegliere è un buon modello quando il testo-guida presenta una dicotomia.",
+      "Citare l'espressione «plebiscito di tutti i giorni» di Renan dà spessore culturale senza bisogno di citazioni lunghe dal testo-guida.",
+      "La sintesi finale, che unisce le due prospettive invece di sceglierne una sola, mostra capacità di mediazione critica."
+    ],
+    quiz:[
+      {q:"Qual è la distinzione centrale introdotta nel testo di Chabod?", opts:["Nazione democratica e nazione autoritaria","Concezione naturalistica e concezione volontaristica di nazione","Nazione antica e nazione moderna","Nazione piccola e nazione grande"], correct:1},
+      {q:"Chi ha coniato l'espressione «un plebiscito di tutti i giorni»?", opts:["Federico Chabod","Ernest Renan","Giuseppe Mazzini","Massimo d'Azeglio"], correct:1},
+      {q:"Perché lo svolgimento preferisce la concezione volontaristica per le società di oggi?", opts:["Perché è più antica","Perché è più inclusiva verso chi non condivide le origini etniche","Perché richiede meno storia comune","Perché è l'unica riconosciuta dal diritto internazionale"], correct:1},
+      {q:"Quale rischio viene riconosciuto come antitesi nello svolgimento?", opts:["Che la nazione naturalistica sia impossibile da definire","Che una nazione solo volontaria rischi di essere fragile, priva di radici comuni","Che Renan avesse torto su tutto","Che le nazioni moderne non esistano più"], correct:1},
+      {q:"Come si conclude lo svolgimento?", opts:["Scegliendo solo la concezione naturalistica","Proponendo di unire memoria condivisa e apertura volontaria","Rifiutando ogni idea di nazione","Ripetendo la domanda iniziale senza risposta"], correct:1}
+    ]
+  },
+  {
+    numero:"B2", tipo:"B", titolo:"Creatività e distruzione creativa: prepararsi al lavoro che cambia",
+    fonte:"Piero Angela, «Dieci cose che ho imparato» — traccia ufficiale Tipologia B, Esame di Stato 2023 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo-guida sosteneva che nel mondo attuale la creatività umana vale più delle materie prime, ma comporta anche fenomeni di «distruzione creativa» dei vecchi mestieri.",
+    domande:[
+      "Perché, secondo Piero Angela, la creatività è oggi la risorsa più importante?",
+      "Che cos'è la «distruzione creativa» e quali esempi storici la illustrano?",
+      "Quali categorie di lavoratori rischiano di essere sostituite dall'automazione, secondo il testo?",
+      "In che modo la scuola, secondo l'autore, dovrebbe prepararsi a questo cambiamento?"
+    ],
+    metodo:"Quando il testo-guida introduce un concetto tecnico (qui: la «distruzione creativa» di Schumpeter), è un'occasione preziosa: definiscilo con parole tue in una riga, poi usalo come perno dell'argomentazione.",
+    testo:`Piero Angela, nel suo libro-testamento Dieci cose che ho imparato, indica nella creatività la vera risorsa del futuro: non le materie prime, non la manodopera a basso costo, ma la capacità di inventare, progettare, innovare. È un'idea che trovo convincente, soprattutto in un'epoca in cui l'automazione e l'intelligenza artificiale sostituiscono sempre più mansioni ripetitive.
+
+Il concetto di "distruzione creativa", elaborato dall'economista Joseph Schumpeter, descrive bene questo processo: ogni innovazione importante distrugge posti di lavoro legati a tecnologie superate, ma ne crea altri, spesso più qualificati, legati alla tecnologia nuova. È accaduto con l'industrializzazione, con l'informatica, e sta accadendo oggi con l'intelligenza artificiale. Chi possiede solo competenze meccaniche rischia di essere sostituito; chi sa essere creativo, cioè risolvere problemi in modo originale, resta insostituibile.
+
+Qualcuno potrebbe obiettare che questa visione sia troppo ottimistica: la transizione tra un lavoro perso e uno nuovo creato non è mai automatica né indolore, e comporta spesso disoccupazione, riqualificazione difficile, disuguaglianze crescenti tra chi ha gli strumenti culturali per adattarsi e chi no. È un'obiezione fondata, che non va sottovalutata.
+
+Proprio per questo credo che il ruolo della scuola sia decisivo: non solo trasmettere nozioni, ma allenare il pensiero critico, la capacità di collegare ambiti diversi, la curiosità, che sono gli ingredienti della creatività di cui parla Angela. Investire nella formazione, fin dai primi anni di scuola, significa preparare le persone non a un singolo mestiere che potrebbe scomparire, ma alla capacità di reinventarsi più volte nel corso della vita: questa, oggi, è la vera ricchezza.`,
+    commento:[
+      "Definire con parole proprie un concetto tecnico (distruzione creativa) mostra padronanza senza bisogno di citazioni lunghe.",
+      "L'antitesi riconosce un limite reale (disuguaglianze, transizione non indolore): questo è più maturo di una confutazione debole che nega tutto.",
+      "Il collegamento finale con il ruolo della scuola riporta il discorso all'esperienza diretta dello studente, requisito richiesto esplicitamente dalla consegna della Tipologia B."
+    ],
+    quiz:[
+      {q:"In un testo argomentativo di Tipologia B, quando il testo-guida introduce un concetto tecnico, la strategia migliore è:", opts:["Ignorarlo perché troppo specialistico","Copiarlo tra virgolette senza commentarlo","Definirlo con parole proprie e usarlo come perno dell'argomentazione","Sostituirlo subito con un sinonimo più semplice"], correct:2},
+      {q:"Perché nello svolgimento si cita l'economista Schumpeter?", opts:["Per allungare il testo","Per dare autorevolezza e precisione al concetto introdotto","Perché lo chiedeva la traccia parola per parola","Per contraddire Piero Angela"], correct:1},
+      {q:"Qual è la tesi principale sostenuta nello svolgimento?", opts:["La tecnologia distruggerà tutti i lavori","La creatività umana resta la risorsa insostituibile, ma va sostenuta con la formazione","Bisogna vietare l'intelligenza artificiale","La scuola non ha alcun ruolo nel futuro del lavoro"], correct:1},
+      {q:"Quale antitesi viene riconosciuta e non respinta a priori?", opts:["Che la creatività non esiste","Che la transizione tra vecchi e nuovi lavori comporta disuguaglianze reali","Che Schumpeter aveva torto","Che la scuola sia inutile"], correct:1},
+      {q:"Con quale idea si chiude lo svolgimento?", opts:["Con un riassunto identico all'introduzione","Con l'invito a temere il progresso tecnologico","Con il ruolo decisivo della scuola nel formare pensiero critico e capacità di adattamento","Con una domanda retorica senza risposta"], correct:2}
+    ]
+  },
+  {
+    numero:"B3", tipo:"B", titolo:"Interrogare il potere: il giornalismo come strumento di verità",
+    fonte:"Oriana Fallaci, «Intervista con la storia» (Rizzoli, 1977) — traccia ufficiale Tipologia B, Esame di Stato 2023 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il brano, tratto dalla raccolta di interviste di Oriana Fallaci a capi di Stato e protagonisti del potere del Novecento, invita a riflettere sul valore dell'intervista come strumento di verità storica.",
+    domande:[
+      "Perché le interviste di Oriana Fallaci sono considerate, secondo il testo, documenti storici?",
+      "Che differenza c'è tra un'intervista di inchiesta e una semplice raccolta di dichiarazioni ufficiali?",
+      "Quali rischi comporta uno stile di intervista molto diretto e conflittuale?",
+      "In che modo il principio del giornalismo di Fallaci resta attuale oggi?"
+    ],
+    metodo:"Nei B di ambito giornalistico-letterario, distingui sempre il metodo dell'autore (qui: lo stile diretto di Fallaci) dal principio più generale che se ne può ricavare: il primo è discutibile, il secondo spesso resta valido.",
+    testo:`Oriana Fallaci ha fatto dell'intervista uno strumento non di cronaca ma di storia: i suoi colloqui con capi di Stato e protagonisti del potere del Novecento restano documenti perché nascevano da domande scomode, poste senza reverenza verso l'interlocutore, per quanto potente.
+
+Trovo che questo approccio definisca ancora oggi il confine tra un buon giornalismo e una semplice cronaca di facciata. Intervistare un potente non significa raccogliere le sue dichiarazioni preconfezionate, ma metterlo di fronte alle contraddizioni della sua azione politica, costringerlo a rispondere nel merito.
+
+Qualcuno potrebbe obiettare che uno stile così diretto, quasi di scontro, rischi di trasformare l'intervista in un atto di ostilità personale più che in un'indagine, compromettendo l'obiettività giornalistica. È un rischio reale, che la stessa Fallaci non sempre riuscì a evitare del tutto.
+
+Per questo credo che il vero insegnamento della sua opera non sia lo stile aggressivo in sé, ma il principio che lo sostiene: un giornalista non deve avere soggezione verso chi detiene il potere, perché solo così l'intervista diventa uno strumento di verità e non di propaganda. In un'epoca di comunicati stampa preconfezionati e conferenze senza contraddittorio, questa lezione resta più che mai attuale.`,
+    commento:[
+      "Distinguere subito «intervista come documento storico» da «cronaca di facciata» fissa una tesi chiara nel primo paragrafo, requisito essenziale della Tipologia B.",
+      "L'antitesi riconosce un limite reale del metodo Fallaci: mostra equilibrio critico invece di un'ammirazione acritica verso l'autrice.",
+      "La chiusura collega il tema al presente (comunicati preconfezionati, conferenze senza contraddittorio): buona tecnica per rendere attuale un argomento storico-giornalistico."
+    ],
+    quiz:[
+      {q:"Perché le interviste di Fallaci sono definite «documenti storici» nello svolgimento?", opts:["Perché sono le più lette in Italia","Perché nascevano da domande scomode che mettevano alla prova il potere","Perché erano scritte in più lingue","Perché duravano molte ore"], correct:1},
+      {q:"Qual è il principale pregio del metodo Fallaci secondo lo svolgimento?", opts:["Lo stile elegante","L'assenza di soggezione verso il potere","La velocità delle interviste","L'uso di molte fonti scritte"], correct:1},
+      {q:"Quale limite viene riconosciuto nell'antitesi?", opts:["Che le sue interviste fossero troppo brevi","Che lo stile diretto rischi di compromettere l'obiettività","Che non intervistasse mai capi di Stato","Che scrivesse solo in inglese"], correct:1},
+      {q:"A quale fenomeno attuale si collega la conclusione dello svolgimento?", opts:["Ai social network","Ai comunicati stampa preconfezionati e alla mancanza di contraddittorio","Alla censura sulla stampa","Al calo delle vendite dei giornali"], correct:1},
+      {q:"Qual è la tesi principale dello svolgimento?", opts:["Ogni giornalista deve essere aggressivo","L'intervista seria è uno strumento di verità solo se libera da soggezione verso il potere","Le interviste sono meno importanti dei documenti scritti","Fallaci ha sbagliato ogni intervista"], correct:1}
+    ]
+  },
+  {
+    numero:"C1", tipo:"C", titolo:"Nozioni o pensiero critico: che cosa dovrebbe valutare un esame?",
+    fonte:"Lettera aperta di un gruppo di accademici al Ministro dell'Istruzione sul senso dell'Esame di Stato — traccia ufficiale Tipologia C, Esame di Stato 2023 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo-spunto, una lettera aperta indirizzata all'allora ministro dell'Istruzione, poneva una domanda di fondo sul senso e sulle finalità dell'esame di maturità.",
+    domande:[
+      "Quale interrogativo di fondo viene posto sul senso dell'esame di Stato?",
+      "Che differenza esiste tra una valutazione basata sulle nozioni e una basata sul pensiero critico?",
+      "In che modo la stessa prima prova di italiano (Tipologia B e C) risponde a questa esigenza?",
+      "Perché le conoscenze di base restano comunque necessarie per argomentare bene?"
+    ],
+    metodo:"Nei temi su fatti di cronaca scolastica di cui non si ricordano tutti i dettagli, resta sul piano dei principi generali: è meglio un ragionamento solido su pochi elementi certi che un accumulo di dettagli incerti.",
+    testo:`Una lettera aperta firmata da un gruppo di accademici, indirizzata all'allora ministro dell'Istruzione, ha riacceso il dibattito su cosa dovrebbe davvero valutare l'esame di Stato: la quantità di nozioni memorizzate o la capacità di ragionare, collegare, argomentare?
+
+Condivido l'idea che un esame concentrato solo sulla verifica mnemonica rischi di premiare chi ha una buona memoria più di chi ha sviluppato un pensiero critico autonomo. La stessa prima prova di italiano, del resto, con le sue tipologie B e C, va in questa direzione: non chiede di ripetere contenuti, ma di argomentare una tesi personale a partire da uno stimolo.
+
+Si potrebbe obiettare che senza una base solida di conoscenze specifiche non sia possibile alcun ragionamento critico serio: si può argomentare bene solo se si conosce a fondo la materia di cui si parla. È un'osservazione corretta, che va tenuta presente.
+
+Per questo penso che la vera sfida della scuola non sia scegliere tra conoscenze e capacità critiche, ma insegnarle insieme: fornire contenuti solidi e, allo stesso tempo, l'abitudine a metterli in relazione, metterli in discussione, usarli per costruire un pensiero autonomo. Un esame ben fatto dovrebbe premiare proprio questo equilibrio, non l'uno o l'altro isolatamente.`,
+    commento:[
+      "Il tema si presta a un collegamento diretto con l'esperienza dello studente (la prova che sta sostenendo): tecnica molto efficace nei temi sulla scuola.",
+      "L'antitesi (conoscenze vs pensiero critico) viene risolta proponendo la loro integrazione: modello di chiusura utile per molti temi sulla valutazione.",
+      "Quando la traccia riguarda un fatto di cronaca di cui non si ricordano tutti i dettagli, meglio restare sul piano dei principi generali piuttosto che inventarne."
+    ],
+    quiz:[
+      {q:"Quale contrasto è al centro dello svolgimento?", opts:["Scuola pubblica e scuola privata","Conoscenze mnemoniche e pensiero critico","Insegnanti giovani e insegnanti anziani","Esame orale ed esame scritto"], correct:1},
+      {q:"A quale prova concreta lo svolgimento collega la sua tesi?", opts:["Alla seconda prova d'indirizzo","Alla stessa prima prova di italiano (Tipologia B e C)","A un test a crocette","Al colloquio orale"], correct:1},
+      {q:"Quale obiezione viene riconosciuta come fondata?", opts:["Che le conoscenze non servano più","Che senza conoscenze solide non ci sia vero pensiero critico","Che l'esame vada abolito","Che i professori sbaglino sempre le valutazioni"], correct:1},
+      {q:"Come si risolve, nello svolgimento, il contrasto tra conoscenze e capacità critiche?", opts:["Scegliendo solo le conoscenze","Scegliendo solo il pensiero critico","Proponendo di insegnarle insieme, non come alternative","Eliminando l'esame di Stato"], correct:2},
+      {q:"Che consiglio di metodo viene dato per i temi su fatti di cronaca poco ricordati?", opts:["Inventare dettagli plausibili","Restare sui principi generali, senza inventare dettagli incerti","Evitare del tutto la traccia","Copiare da un giornale"], correct:1}
+    ]
+  },
+  {
+    numero:"C2", tipo:"C", titolo:"L'elogio dell'attesa contro la cultura dell'istantaneo",
+    fonte:"Marco Belpoliti, «Elogio dell'attesa nell'era di WhatsApp», La Repubblica, 30 gennaio 2018 — traccia ufficiale Tipologia C, Esame di Stato 2023 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il brano rifletteva sul valore perduto dell'attesa in una società abituata alla comunicazione istantanea.",
+    domande:[
+      "Perché, secondo il testo, viviamo nell'«era dell'istantaneità»?",
+      "In che modo l'attesa può essere un tempo utile alla maturazione di un pensiero, e non solo un tempo vuoto?",
+      "Quali vantaggi reali ha portato, secondo lo svolgimento, la comunicazione immediata?",
+      "Qual è, secondo la conclusione, il vero problema legato all'uso della tecnologia?"
+    ],
+    metodo:"Nei temi «nostalgici» (che confrontano presente e passato) evita il rimpianto ingenuo: riconosci sempre anche i vantaggi del presente, per dimostrare equilibrio di giudizio.",
+    testo:`Un messaggio WhatsApp letto e non ancora risposto genera, in molti, un disagio quasi fisico. Marco Belpoliti osserva che viviamo nell'era dell'istantaneità: tutto deve accadere subito, l'attesa è percepita come un tempo sprecato, quasi un fallimento della tecnologia che dovrebbe azzerare le distanze.
+
+Sono convinto, però, che questa fretta continua abbia un costo che spesso non calcoliamo. L'attesa, infatti, non è solo un intervallo vuoto tra un desiderio e la sua soddisfazione: è il tempo in cui un pensiero matura, un dubbio si chiarisce, un desiderio si definisce meglio. Basti pensare alla scrittura di una lettera, pratica quasi scomparsa: il tempo necessario a scriverla e ad attendere la risposta permetteva di riflettere prima di dire qualcosa, mentre oggi un messaggio istantaneo viene spesso inviato d'impulso, senza la stessa cura.
+
+È vero che l'immediatezza ha portato anche vantaggi reali, per esempio nelle emergenze o nel lavoro a distanza, dove poter comunicare subito con chi è lontano ha semplificato la vita di molte persone. Non si tratta dunque di rimpiangere il passato o di rifiutare la tecnologia, ma di recuperare, accanto alla velocità, anche la capacità di aspettare quando l'attesa ha un senso.
+
+Per questo credo che il vero problema non sia la tecnologia in sé, ma l'incapacità, che essa può favorire, di tollerare anche solo pochi minuti di silenzio o di incertezza. Educarsi a saper aspettare — un risultato, una risposta, la soluzione di un problema — resta una competenza preziosa, forse ancora più necessaria oggi che tutto sembra dover accadere in tempo reale.`,
+    commento:[
+      "L'esempio della lettera scritta a mano è semplice ma efficace: rende concreto un concetto altrimenti astratto.",
+      "Riconoscere i vantaggi reali dell'immediatezza (emergenze, lavoro a distanza) evita il tono nostalgico e mantiene il testo equilibrato.",
+      "La chiusura ribalta il problema («non è la tecnologia, è l'incapacità di aspettare»): tecnica utile per un finale più originale del semplice riassunto."
+    ],
+    quiz:[
+      {q:"Un tema di attualità che confronta presente e passato dovrebbe soprattutto evitare:", opts:["Di usare esempi concreti","Il rimpianto ingenuo, senza riconoscere anche i vantaggi del presente","Di prendere una posizione personale","Di collegarsi all'esperienza dello studente"], correct:1},
+      {q:"Che funzione ha, nello svolgimento, l'esempio della lettera scritta a mano?", opts:["Nessuna, è solo un dettaglio decorativo","Rende concreto un concetto astratto (il valore dell'attesa)","Dimostra che la scrittura a mano è superiore in ogni caso","Serve a criticare Belpoliti"], correct:1},
+      {q:"Quale vantaggio dell'immediatezza viene esplicitamente riconosciuto nel testo?", opts:["Nessuno, il testo è tutto contro la tecnologia","La comunicazione rapida in emergenze e nel lavoro a distanza","La possibilità di scrivere senza errori","La sostituzione totale della scrittura a mano"], correct:1},
+      {q:"Qual è la tesi finale a cui arriva lo svolgimento?", opts:["Bisogna abbandonare la tecnologia","Il vero problema è l'incapacità di tollerare l'attesa, non la tecnologia in sé","WhatsApp andrebbe vietato ai giovani","L'attesa non serve più a nulla oggi"], correct:1},
+      {q:"Perché la conclusione è considerata efficace nel commento?", opts:["Perché ripete l'introduzione","Perché ribalta il problema in modo originale invece di limitarsi a riassumere","Perché introduce un argomento nuovo mai citato prima","Perché nega tutto ciò che è stato detto prima"], correct:1}
+    ]
+  }
+],
+"2024": [
+  {
+    numero:"B1", tipo:"B", titolo:"La bomba atomica e la responsabilità della scienza",
+    fonte:"Giuseppe Galasso, «Storia d'Europa» — traccia ufficiale Tipologia B (ambito storico), Esame di Stato 2024 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il brano-guida ripercorreva la logica dell'«equilibrio del terrore» tra le due superpotenze nucleari durante la Guerra Fredda.",
+    domande:[
+      "Che cos'è l'«equilibrio del terrore» descritto nel brano di Galasso?",
+      "In che senso la bomba atomica rappresenta insieme un progresso scientifico e una minaccia?",
+      "Quali argomenti si possono portare a favore e contro la responsabilità individuale degli scienziati?",
+      "Quali applicazioni pacifiche dell'energia nucleare vengono ricordate nello svolgimento?"
+    ],
+    metodo:"I temi storico-scientifici premiano chi sa distinguere il piano tecnico (che cosa rende possibile una scoperta) dal piano etico (chi decide come usarla): tienili sempre separati e poi rimettili in relazione nella conclusione.",
+    testo:`La bomba atomica, nata dalla ricerca scientifica più avanzata del Novecento, rappresenta forse l'esempio più drammatico di come una scoperta possa essere insieme un progresso della conoscenza e una minaccia per la sopravvivenza dell'umanità. Giuseppe Galasso, ripercorrendo la logica dell'equilibrio del terrore durante la Guerra Fredda, mostra come due superpotenze abbiano evitato la guerra diretta proprio grazie alla reciproca capacità di distruggersi a vicenda.
+
+Da questa vicenda storica nasce una riflessione che ritengo ancora attuale: la scienza, in sé, non è né buona né cattiva, è uno strumento; è l'uso che se ne fa, deciso dalla politica e dalla società, a determinarne le conseguenze morali. Lo stesso principio fisico che permette di produrre energia nucleare per scopi civili può essere impiegato per costruire armi di distruzione di massa.
+
+Qualcuno potrebbe sostenere che gli scienziati dovrebbero rifiutarsi di condurre ricerche che possano avere applicazioni militari, come fecero alcuni fisici coinvolti nel Progetto Manhattan una volta viste le conseguenze del loro lavoro. È una posizione comprensibile, ma difficile da applicare in modo assoluto: la stessa ricerca sull'energia nucleare ha permesso, per esempio, importanti progressi in medicina, come la diagnostica per immagini e la cura di alcuni tumori.
+
+Per questo credo che la vera responsabilità non ricada solo sugli scienziati, ma sull'intera società: servono leggi internazionali condivise, un controllo democratico sulle applicazioni militari della ricerca, un'opinione pubblica informata e capace di esercitare pressione sui governi. Solo attraverso questa responsabilità collettiva, e non attraverso il rifiuto della conoscenza, si può sperare di orientare il progresso scientifico verso il bene comune.`,
+    commento:[
+      "La frase-chiave «la scienza non è né buona né cattiva, è uno strumento» è un buon esempio di tesi generale ricavata da un caso specifico: tecnica molto apprezzata nei B storico-scientifici.",
+      "L'antitesi cita un caso storico reale (i fisici del Progetto Manhattan): sempre meglio di un'obiezione generica e senza riferimenti.",
+      "La conclusione allarga la responsabilità dal singolo scienziato all'intera società: evita una risposta troppo semplice."
+    ],
+    quiz:[
+      {q:"Nei temi storico-scientifici di Tipologia B è utile distinguere sempre:", opts:["Il piano tecnico da quello etico, per poi ricollegarli nella conclusione","Solo le date storiche importanti","Il nome dell'autore dal titolo del libro","Le opinioni proprie da quelle altrui, senza mai confrontarle"], correct:0},
+      {q:"Qual è la tesi generale che lo svolgimento ricava dal caso della bomba atomica?", opts:["La scienza va sempre fermata","La scienza è uno strumento neutro; è l'uso a determinarne il valore morale","Solo i fisici sono responsabili delle guerre","La Guerra Fredda è stata inutile"], correct:1},
+      {q:"Quale esempio storico viene usato per dare corpo all'antitesi?", opts:["La caduta del Muro di Berlino","I fisici del Progetto Manhattan che si opposero dopo aver visto le conseguenze","La scoperta della penicillina","Il trattato di Versailles"], correct:1},
+      {q:"Quale controesempio viene usato per mostrare benefici civili della stessa scoperta?", opts:["L'energia solare","La diagnostica per immagini e la cura di alcuni tumori","La telefonia mobile","L'agricoltura biologica"], correct:1},
+      {q:"Su chi ricade, secondo la conclusione, la responsabilità finale?", opts:["Solo sugli scienziati","Solo sui governi","Sull'intera società, attraverso leggi condivise e controllo democratico","Su nessuno, è un fenomeno inevitabile"], correct:2}
+    ]
+  },
+  {
+    numero:"B2", tipo:"B", titolo:"L'accesso a internet è un diritto di cittadinanza?",
+    fonte:"Maria Agostina Cabiddu, articolo sulla Rivista AIC (Associazione Italiana dei Costituzionalisti) — traccia ufficiale Tipologia B, Esame di Stato 2024 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo, di una giurista costituzionalista, poneva la questione se l'accesso a internet debba essere considerato un diritto di cittadinanza oppure un semplice servizio commerciale.",
+    domande:[
+      "Quale domanda pone il testo di Cabiddu riguardo all'accesso a internet?",
+      "Quali servizi pubblici essenziali sono oggi sempre più digitalizzati, secondo il testo?",
+      "In che senso il «divario digitale» può trasformarsi in un divario di cittadinanza?",
+      "Quali responsabilità dovrebbe assumersi lo Stato secondo la conclusione dello svolgimento?"
+    ],
+    metodo:"Quando il testo-guida pone una domanda esplicita, riformulala nell'introduzione del tuo elaborato: è un modo naturale per introdurre subito il nodo del problema senza limitarti a ripeterlo.",
+    testo:`Maria Agostina Cabiddu, giurista costituzionalista, pone una domanda che oggi appare quasi ovvia ma che meriterebbe più attenzione: l'accesso a internet è un diritto di cittadinanza al pari di altri diritti fondamentali, oppure resta un semplice servizio commerciale a cui si accede se ci si può permettere?
+
+Credo che la prima risposta sia ormai quella corretta. Sempre più servizi essenziali - iscrizioni scolastiche, pratiche sanitarie, domande alla pubblica amministrazione, persino la ricerca di un lavoro - passano oggi attraverso piattaforme digitali. Chi non ha una connessione adeguata, o le competenze per usarla, rischia di restare escluso da diritti che dovrebbero essere garantiti a tutti.
+
+Si potrebbe obiettare che paragonare l'accesso a internet a diritti storici come l'istruzione o la salute sia eccessivo, trattandosi in fondo di un'infrastruttura tecnologica e non di un bisogno primario. È un'obiezione che aveva senso vent'anni fa, quando internet era un servizio accessorio; oggi, con la progressiva digitalizzazione dei servizi pubblici, la situazione è cambiata radicalmente.
+
+Per questo ritengo che lo Stato abbia la responsabilità di garantire non solo le infrastrutture di rete nelle aree più svantaggiate, ma anche una reale alfabetizzazione digitale, perché il divario digitale, se non colmato, rischia di trasformarsi in un nuovo, sottile divario di cittadinanza.`,
+    commento:[
+      "Aprire riformulando la domanda del testo-guida è un buon modo per introdurre subito il nodo del problema senza limitarsi a ripeterlo.",
+      "L'antitesi viene collocata storicamente («vent'anni fa aveva senso»): tecnica efficace per confutare un'obiezione senza negarla del tutto.",
+      "La proposta finale (infrastrutture + alfabetizzazione digitale) è concreta e in due parti, più solida di una conclusione puramente valoriale."
+    ],
+    quiz:[
+      {q:"Qual è la tesi principale sostenuta nello svolgimento?", opts:["Internet è un lusso superfluo","L'accesso a internet è ormai un diritto di cittadinanza","Lo Stato non deve occuparsi di internet","Internet danneggia i servizi pubblici"], correct:1},
+      {q:"Quale categoria di servizi viene usata come prova a sostegno della tesi?", opts:["I servizi pubblici digitalizzati (scuola, sanità, PA)","I videogiochi online","I social network","Lo streaming musicale"], correct:0},
+      {q:"Come viene trattata l'obiezione sul paragone con i diritti storici?", opts:["Viene ignorata","Riconosciuta valida in passato ma superata dal contesto attuale","Accettata senza riserve","Usata per confermare che internet non è un diritto"], correct:1},
+      {q:"Che cosa si intende per «divario digitale» nel testo?", opts:["La differenza di velocità tra le connessioni","La disuguaglianza di accesso e competenze digitali che esclude alcuni cittadini dai servizi","Il numero di dispositivi posseduti","La differenza tra Wi-Fi e connessione via cavo"], correct:1},
+      {q:"Che cosa propone la conclusione dello svolgimento?", opts:["Di privatizzare del tutto internet","Infrastrutture di rete più alfabetizzazione digitale diffusa","Di limitare l'uso di internet ai giovani","Di abolire i servizi digitali pubblici"], correct:1}
+    ]
+  },
+  {
+    numero:"B3", tipo:"B", titolo:"Riscoprire il silenzio in un mondo rumoroso",
+    fonte:"Nicoletta Polla-Mattiot, «Riscoprire il silenzio. Arte, musica, poesia, Natura fra ascolto e comunicazione» — traccia ufficiale Tipologia B, Esame di Stato 2024 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo invitava a riflettere sul valore del silenzio, inteso non come vuoto ma come spazio necessario per l'ascolto autentico, in un mondo caratterizzato da un rumore quasi continuo.",
+    domande:[
+      "Come viene definito il silenzio nel testo, in contrapposizione a una semplice assenza di suono?",
+      "In che modo il silenzio favorisce la creatività, secondo l'autrice?",
+      "Perché, per molte persone e soprattutto per i più giovani, il rumore di fondo può non essere percepito come un disturbo?",
+      "Quali pratiche concrete si potrebbero adottare per reintrodurre il silenzio nella vita quotidiana?"
+    ],
+    metodo:"Nei temi che ruotano attorno a un singolo concetto (qui: il silenzio), è utile ridefinirlo esplicitamente all'inizio, distinguendolo dal senso comune del termine.",
+    testo:`Viviamo immersi in un rumore quasi continuo: notifiche, musica di sottofondo, voci, traffico. Nicoletta Polla-Mattiot invita a riscoprire il silenzio non come assenza di suono, ma come condizione necessaria per l'ascolto autentico - di sé, degli altri, della natura.
+
+Trovo questa distinzione fondamentale: il silenzio di cui parla l'autrice non è un vuoto da riempire al più presto, ma uno spazio attivo in cui il pensiero può finalmente organizzarsi, senza le continue interruzioni a cui siamo abituati. Non a caso molti musicisti e scrittori raccontano di aver bisogno di momenti di silenzio assoluto per comporre o scrivere: il silenzio, paradossalmente, è ciò che rende possibile la creazione.
+
+Qualcuno potrebbe obiettare che nella vita reale, soprattutto per i più giovani, il rumore di fondo - musica, social, conversazioni - non sia un disturbo ma una forma di compagnia, un modo per non sentirsi soli. È un'osservazione comprensibile: il silenzio può generare anche disagio, se non lo si è mai praticato.
+
+Per questo credo che il silenzio vada reintrodotto gradualmente nella vita quotidiana, non come imposizione ma come abitudine da costruire: pochi minuti al giorno senza dispositivi, per riabituarsi ad ascoltare i propri pensieri prima ancora che quelli degli altri.`,
+    commento:[
+      "La distinzione «silenzio come vuoto» / «silenzio come spazio attivo» riprende e sviluppa il nodo concettuale del testo-guida: fondamentale nella Tipologia B.",
+      "L'esempio di musicisti e scrittori rende concreta un'affermazione altrimenti astratta.",
+      "La conclusione propone un'abitudine piccola e realistica (pochi minuti al giorno), più credibile di un generico invito a «riscoprire il silenzio»."
+    ],
+    quiz:[
+      {q:"Come viene ridefinito il silenzio nello svolgimento?", opts:["Come una forma di solitudine da evitare","Come assenza di suono e nulla più","Come condizione attiva per l'ascolto e il pensiero","Come un lusso per pochi"], correct:2},
+      {q:"Quale categoria di persone viene citata come esempio del legame tra silenzio e creatività?", opts:["Sportivi professionisti","Musicisti e scrittori","Politici","Imprenditori"], correct:1},
+      {q:"Quale obiezione viene riconosciuta rispetto ai giovani e al rumore di fondo?", opts:["Che i giovani odino il silenzio per natura","Che il rumore possa essere percepito come compagnia, non come disturbo","Che i giovani non ascoltino mai musica","Che il silenzio sia pericoloso per la salute"], correct:1},
+      {q:"Che cosa propone concretamente la conclusione?", opts:["Di eliminare del tutto la musica","Di introdurre pochi minuti di silenzio quotidiano senza dispositivi","Di vietare i social ai minori","Di studiare sempre in silenzio assoluto"], correct:1},
+      {q:"Qual è la tesi centrale dello svolgimento?", opts:["Il silenzio è inutile nella vita moderna","Il silenzio è necessario per l'ascolto autentico e va coltivato attivamente","Il rumore aiuta sempre la concentrazione","Il silenzio va imposto per legge"], correct:1}
+    ]
+  },
+  {
+    numero:"C1", tipo:"C", titolo:"L'elogio dell'imperfezione contro la pressione della perfezione",
+    fonte:"Rita Levi Montalcini, «Elogio dell'imperfezione» — traccia ufficiale Tipologia C, Esame di Stato 2024 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il brano-guida, tratto dall'autobiografia della scienziata e premio Nobel, presentava il limite personale come punto di partenza per la crescita, non come un difetto da nascondere.",
+    domande:[
+      "Perché il titolo «Elogio dell'imperfezione» può sorprendere, considerando il percorso di Rita Levi Montalcini?",
+      "In che modo i social network amplificano la pressione verso modelli di perfezione irraggiungibili?",
+      "Che differenza c'è tra «imperfezione come punto di partenza» e «imperfezione come alibi»?",
+      "Qual è, secondo la conclusione, il vero insegnamento da trarre dall'esperienza della scienziata?"
+    ],
+    metodo:"Attenzione ai temi «di formazione personale»: il rischio è restare troppo generici. Ancora la riflessione a un fenomeno concreto e vicino all'esperienza — qui i social — per non scivolare nel banale.",
+    testo:`Rita Levi Montalcini, premio Nobel per la Medicina, ha intitolato la propria autobiografia Elogio dell'imperfezione: un titolo che può sorprendere, se pensiamo al percorso di eccellenza scientifica della sua vita. Eppure proprio lei, che ha conosciuto le discriminazioni razziali e le difficoltà di essere donna nella scienza del Novecento, sceglie di mettere al centro non la perfezione, ma il limite accettato e trasformato in energia.
+
+Trovo che questa prospettiva sia particolarmente utile per chi, come noi studenti, vive spesso sotto la pressione di modelli di perfezione irraggiungibili, amplificati oggi dai social network, dove le vite altrui appaiono sempre riuscite e prive di difetti. Questa pressione può generare ansia, insicurezza, senso di inadeguatezza.
+
+L'imperfezione di cui parla Levi Montalcini non è però un alibi per non impegnarsi, bensì la consapevolezza che ogni limite personale può diventare, se accettato, un punto di partenza: la scienziata stessa racconta come alcune sue difficoltà, superate con tenacia, siano diventate motore delle sue scoperte. Diverso è il caso di chi usa l'imperfezione come scusa per rinunciare a migliorarsi: qui la riflessione rischia di scivolare in una giustificazione comoda.
+
+Per questo penso che il vero insegnamento non sia "va bene essere imperfetti e basta", ma "va bene partire dai propri limiti per costruire qualcosa di autentico". Accettare l'imperfezione, in questo senso, significa smettere di confrontarsi con un modello irraggiungibile e cominciare a confrontarsi con la propria versione migliore possibile, giorno dopo giorno.`,
+    commento:[
+      "Il collegamento con i social rende attuale un tema che, preso solo a livello astratto, rischierebbe di restare generico.",
+      "Distinguere «imperfezione come punto di partenza» da «imperfezione come alibi» è una sfumatura che i correttori apprezzano.",
+      "La frase finale in forma di antitesi bilanciata («non... ma...») è un ottimo modello di chiusura per i temi di riflessione personale."
+    ],
+    quiz:[
+      {q:"Nei temi di formazione personale, il rischio principale da evitare è:", opts:["Essere troppo brevi","Restare troppo generici, senza ancorare la riflessione a un fenomeno concreto","Parlare in prima persona","Citare un autore"], correct:1},
+      {q:"A quale fenomeno concreto lo svolgimento collega la pressione della perfezione?", opts:["Allo sport agonistico","Ai social network e alle vite apparentemente perfette che mostrano","Alla scuola dell'obbligo","Al cinema"], correct:1},
+      {q:"Quale distinzione importante introduce lo svolgimento rispetto al concetto di imperfezione?", opts:["Nessuna, il concetto è usato in modo univoco","Tra imperfezione come punto di partenza per migliorarsi e imperfezione usata come alibi","Tra imperfezione maschile e femminile","Tra imperfezione fisica e mentale"], correct:1},
+      {q:"Come viene usata la biografia di Rita Levi Montalcini nello svolgimento?", opts:["Come esempio storico di come un limite personale sia diventato motore di scoperte","Solo come titolo, senza altri riferimenti","Per criticare la comunità scientifica","Per parlare di premi Nobel in generale"], correct:0},
+      {q:"Qual è la struttura della frase di chiusura dello svolgimento?", opts:["Una domanda retorica","Un'antitesi bilanciata del tipo \"non... ma...\"","Una citazione letterale del testo-guida","Un elenco puntato"], correct:1}
+    ]
+  },
+  {
+    numero:"C2", tipo:"C", titolo:"Dal diario al selfie: scrivere di sé quando tutti possono leggere",
+    fonte:"Maurizio Caminito, «Profili, selfie e blog. La forma del diario nell'epoca di internet» — traccia ufficiale Tipologia C, Esame di Stato 2024 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo rifletteva sulla trasformazione del diario personale, da luogo privato e intimo a spazio pubblico di condivisione (blog, social, profili), e su come questo cambiamento influisca sulla scrittura di sé.",
+    domande:[
+      "Che differenza esiste, secondo il testo, tra il diario tradizionale e i «diari» digitali di oggi?",
+      "In che modo la consapevolezza di essere letti condiziona la scrittura di sé sui social?",
+      "Quali aspetti positivi della scrittura pubblica di sé vengono riconosciuti nel testo?",
+      "Qual è il rischio principale legato alla trasformazione del diario in narrazione pubblica?"
+    ],
+    metodo:"Nei temi sulla trasformazione digitale di un'abitudine antica (qui: il diario), parti sempre dal confronto tra la forma tradizionale e quella nuova, prima di valutarne vantaggi e rischi.",
+    testo:`Il diario intimo, per generazioni, è stato il luogo privato per eccellenza: un quaderno chiuso a chiave, pensieri scritti per sé stessi, senza lettori. Maurizio Caminito osserva come oggi questa forma si sia trasformata: blog, profili social, storie quotidiane sono diventati i nuovi «diari», ma scritti sapendo fin dall'inizio che qualcuno li leggerà.
+
+Credo che questo cambiamento non sia solo tecnico, ma tocchi il senso stesso della scrittura di sé. Il diario tradizionale permetteva l'onestà perché non doveva piacere a nessuno; il diario pubblico di oggi, invece, è spesso condizionato dal desiderio di essere approvati, di ricevere un like, di mostrare una versione di sé più curata di quella reale.
+
+È vero che i nuovi strumenti digitali hanno anche aspetti positivi: permettono di condividere esperienze, trovare persone con vissuti simili, costruire comunità attorno a un'esperienza personale, cosa impossibile con un diario chiuso in un cassetto. Non si tratta dunque di rimpiangere il diario cartaceo come unico modello autentico.
+
+Per questo penso che il vero rischio non sia scrivere di sé in pubblico, ma perdere la capacità di scrivere anche solo per sé stessi, senza l'aspettativa di un giudizio altrui: un equilibrio che vale la pena custodire, oggi più che mai.`,
+    commento:[
+      "La contrapposizione «diario chiuso a chiave / diario pubblico» è un buon punto di partenza per un tema sulla trasformazione digitale di un'abitudine antica.",
+      "Riconoscere aspetti positivi (comunità, condivisione) prima di introdurre il rischio evita un giudizio unilaterale sui social.",
+      "La chiusura individua un rischio preciso (perdere la capacità di scrivere solo per sé) invece di una generica critica ai social."
+    ],
+    quiz:[
+      {q:"Come viene definito il diario tradizionale nello svolgimento?", opts:["Un obbligo scolastico","Un luogo privato, scritto senza lettori","Uno strumento pubblicitario","Un genere letterario minore"], correct:1},
+      {q:"Che effetto ha, secondo il testo, la consapevolezza di essere letti sulla scrittura di sé?", opts:["Nessun effetto","La condiziona verso l'approvazione altrui, rendendola meno onesta","La rende sempre più sincera","La rende illegale"], correct:1},
+      {q:"Quale vantaggio dei diari digitali viene riconosciuto nello svolgimento?", opts:["Nessuno","La possibilità di creare comunità e condividere esperienze","Il fatto di essere più economici","Il fatto di essere obbligatori a scuola"], correct:1},
+      {q:"Qual è il rischio principale indicato nella conclusione?", opts:["Scrivere troppo poco","Perdere la capacità di scrivere per sé stessi, senza aspettarsi un giudizio","Non avere abbastanza follower","Dimenticare come si scrive a mano"], correct:1},
+      {q:"Qual è la tesi generale dello svolgimento?", opts:["I social hanno reso inutile il diario","I social hanno trasformato il diario privato in narrazione pubblica, con vantaggi e rischi","Il diario cartaceo va vietato","I social sostituiscono completamente la scrittura"], correct:1}
+    ]
+  }
+],
+"2025": [
+  {
+    numero:"B1", tipo:"B", titolo:"Il New Deal: quando lo Stato interviene contro la crisi",
+    fonte:"Piers Brendon, «Gli anni Trenta. Il decennio che sconvolse il mondo» (Carocci, 2005) — traccia ufficiale Tipologia B (ambito storico), Esame di Stato 2025 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il brano ricostruiva la crisi economica del 1929 e la risposta del New Deal di Franklin Delano Roosevelt, con l'intervento diretto dello Stato nell'economia statunitense.",
+    domande:[
+      "Quale evento storico è al centro del testo di Piers Brendon?",
+      "In che cosa consistette la svolta rappresentata dal New Deal di Roosevelt?",
+      "Quali rischi comporta, secondo lo svolgimento, un intervento statale troppo esteso in economia?",
+      "In quali altre crisi storiche o recenti si è ripresentato il dibattito tra intervento pubblico e libero mercato?"
+    ],
+    metodo:"Nei B storici obbligatori dal 2024, colloca sempre l'evento (qui: crisi del 1929) e la risposta politica (New Deal) nei primi due paragrafi, prima di trarne una lezione generale.",
+    testo:`Piers Brendon ricostruisce gli anni Trenta come il decennio in cui il mito del mercato capace di autoregolarsi crollò insieme alla Borsa di New York nel 1929. La risposta di Franklin Delano Roosevelt, il New Deal, segnò una svolta storica: per la prima volta lo Stato americano intervenne direttamente nell'economia con opere pubbliche, sussidi, regole bancarie, per rilanciare occupazione e consumi.
+
+Ritengo che questa vicenda offra una lezione ancora attuale: nelle grandi crisi economiche, lasciare che il mercato si aggiusti da solo può significare anni di disoccupazione e povertà diffusa, mentre un intervento pubblico mirato può accorciare i tempi della ripresa e attutirne i costi sociali.
+
+Qualcuno potrebbe obiettare che un intervento statale troppo esteso rischi di generare inefficienze, debito pubblico crescente e dipendenza dai sussidi, disincentivando l'iniziativa privata. È un'obiezione seria, che trova conferma in alcune politiche economiche successive, non sempre efficaci quanto il New Deal.
+
+Per questo credo che la lezione degli anni Trenta non sia "più Stato sempre e comunque", ma la necessità di un intervento pubblico calibrato, capace di attivarsi con decisione nelle emergenze e di ritirarsi quando il sistema torna a funzionare autonomamente: un equilibrio difficile, ma che la storia del Novecento ha dimostrato possibile.`,
+    commento:[
+      "Collocare subito l'evento storico (crisi del 1929) e la risposta politica (New Deal) è essenziale nei B di argomento storico, obbligatori dal 2024.",
+      "L'antitesi è supportata da un riferimento corretto a politiche successive meno efficaci, senza inventare dati precisi non verificabili.",
+      "La conclusione propone un equilibrio («intervento calibrato») anziché una posizione ideologica netta: atteggiamento apprezzato nei temi economico-politici."
+    ],
+    quiz:[
+      {q:"Quale crisi è al centro del testo di Piers Brendon?", opts:["La crisi del petrolio del 1973","La crisi del 1929 e la Grande Depressione","La crisi del 2008","La crisi della prima guerra mondiale"], correct:1},
+      {q:"Chi ha promosso il New Deal?", opts:["Winston Churchill","Franklin Delano Roosevelt","Herbert Hoover","Woodrow Wilson"], correct:1},
+      {q:"Che tipo di intervento previde il New Deal?", opts:["Riduzione delle tasse e privatizzazioni","Opere pubbliche, sussidi e regole bancarie per rilanciare economia e occupazione","Chiusura delle banche private","Abolizione della moneta"], correct:1},
+      {q:"Quale rischio viene riconosciuto nell'antitesi?", opts:["Che il New Deal fosse incostituzionale","Inefficienze, debito pubblico e dipendenza dai sussidi","Che gli Stati Uniti perdessero la guerra","Che il New Deal fosse troppo breve"], correct:1},
+      {q:"Qual è la conclusione dello svolgimento sul ruolo dello Stato in economia?", opts:["Lo Stato non deve mai intervenire","Serve un intervento pubblico calibrato, forte nelle emergenze e non permanente","Lo Stato deve gestire tutta l'economia","Il mercato si autoregola sempre bene"], correct:1}
+    ]
+  },
+  {
+    numero:"B2", tipo:"B", titolo:"«Rispetto», parola dell'anno: che cosa significa davvero?",
+    fonte:"Riccardo Maccioni, «\"Rispetto\" è la parola dell'anno Treccani», Avvenire, 17 dicembre 2024 — traccia ufficiale Tipologia B, Esame di Stato 2025 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo prendeva spunto dalla scelta della Treccani di «rispetto» come parola del 2024, per riflettere sul significato autentico di questo termine nel dibattito pubblico contemporaneo.",
+    domande:[
+      "Perché la scelta della parola «rispetto» come parola dell'anno risulta significativa, secondo il testo?",
+      "Quale differenza viene proposta tra «rispetto» e semplice «tolleranza»?",
+      "In che senso il rispetto verso una persona non implica necessariamente il rispetto per ogni sua opinione?",
+      "Che cosa significa, secondo la conclusione, un «doppio movimento» di ascolto e fermezza?"
+    ],
+    metodo:"Quando il testo-guida ruota attorno a una singola parola-chiave, il compito principale è approfondirne il significato con una distinzione concettuale precisa, non limitarsi a usarla genericamente.",
+    testo:`Che l'Istituto Treccani abbia scelto «rispetto» come parola del 2024 non è un caso: in un'epoca di toni aspri nel dibattito pubblico, online e non solo, il bisogno di questa parola sembra crescere proprio mentre la sua pratica diminuisce. Riccardo Maccioni riflette su cosa significhi davvero rispettare qualcuno, oltre l'uso ormai logoro del termine.
+
+Credo che il rispetto autentico non coincida con la semplice tolleranza, intesa come il limitarsi a non attaccare chi la pensa diversamente. Rispettare qualcuno significa riconoscergli una dignità di interlocutore, ascoltare le sue ragioni prima di giudicarle, anche quando si è convinti che abbia torto.
+
+Si potrebbe obiettare che, di fronte a posizioni che negano diritti fondamentali di altre persone, il rispetto rischi di trasformarsi in un'accettazione passiva di idee inaccettabili. È un punto delicato: rispettare una persona non significa necessariamente rispettare ogni sua opinione, soprattutto quando questa nega la dignità di qualcun altro.
+
+Per questo penso che il vero rispetto richieda un doppio movimento: l'apertura all'ascolto di chi ha opinioni diverse dalle nostre, e insieme la fermezza nel non rinunciare mai ai principi di dignità e uguaglianza che rendono possibile, in primo luogo, un confronto rispettoso.`,
+    commento:[
+      "Distinguere «rispetto» da «tolleranza» è un buon esempio di approfondimento concettuale, utile ogni volta che il testo-guida ruota attorno a un singolo termine.",
+      "L'antitesi tocca un punto delicato (rispetto e negazione dei diritti altrui) e viene gestita con equilibrio, senza risposte semplicistiche.",
+      "La conclusione a «doppio movimento» (ascolto + fermezza) è un buon modello per chiudere temi su valori etici complessi."
+    ],
+    quiz:[
+      {q:"Quale parola è stata scelta come parola dell'anno 2024 dalla Treccani, secondo il testo?", opts:["\"Empatia\"","\"Rispetto\"","\"Resilienza\"","\"Comunità\""], correct:1},
+      {q:"Che differenza propone lo svolgimento tra rispetto e tolleranza?", opts:["Nessuna, sono sinonimi","Il rispetto richiede riconoscere dignità e ascoltare, non solo non attaccare","La tolleranza è più profonda del rispetto","Il rispetto riguarda solo le istituzioni"], correct:1},
+      {q:"Quale obiezione viene sollevata sul rispetto verso ogni opinione?", opts:["Che il rispetto sia sempre facile","Che rischi di diventare accettazione passiva di idee che negano diritti altrui","Che il rispetto sia solo un dovere legale","Che riguardi solo gli adulti"], correct:1},
+      {q:"Come viene definito il «doppio movimento» proposto nella conclusione?", opts:["Ascolto delle opinioni diverse più fermezza sui principi di dignità e uguaglianza","Silenzio e obbedienza","Critica e polemica","Indifferenza e distacco"], correct:0},
+      {q:"Qual è la tesi centrale dello svolgimento?", opts:["Il rispetto è un concetto superato","Il rispetto autentico va oltre la tolleranza passiva, richiedendo riconoscimento della dignità altrui","Il rispetto riguarda solo il linguaggio formale","Non esiste una definizione di rispetto"], correct:1}
+    ]
+  },
+  {
+    numero:"B3", tipo:"B", titolo:"Fama effimera, tracce durature: l'uomo nell'Antropocene",
+    fonte:"Telmo Pievani, «Un quarto d'era (geologica) di celebrità» — traccia ufficiale Tipologia B, Esame di Stato 2025 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo-guida collegava la celebrità istantanea dei social all'idea di Antropocene: l'epoca geologica in cui l'uomo lascia tracce permanenti sul pianeta.",
+    domande:[
+      "Che cos'è l'Antropocene, secondo la definizione che emerge dal testo?",
+      "In che senso la fama sui social è diventata sempre più breve nel tempo?",
+      "Perché, secondo lo svolgimento, le scelte individuali quotidiane hanno comunque un peso di fronte a fenomeni globali come il cambiamento climatico?",
+      "Quali due scale temporali propone di tenere insieme la conclusione dello svolgimento?"
+    ],
+    metodo:"Quando il testo-guida propone un'immagine forte (qui: fama di pochi secondi vs tracce di migliaia di anni), riprendila esplicitamente all'inizio: è il modo più rapido per dimostrare di aver capito il testo prima di argomentare.",
+    testo:`Andy Warhol prevedeva per ognuno «un quarto d'ora di celebrità»; oggi i social hanno ridotto drasticamente questo tempo, a volte a pochi secondi di un video virale. Telmo Pievani rovescia però la prospettiva e la lega a una scala temporale ben più ampia, quella geologica: mentre la nostra fama personale svanisce in fretta, l'impronta della nostra civiltà sul pianeta — plastica, CO2, cemento — resterà leggibile nelle rocce per migliaia di anni. È il paradosso dell'Antropocene, l'epoca in cui l'uomo è diventato una forza geologica.
+
+Trovo questa immagine molto efficace per riflettere su un cortocircuito tipico della nostra epoca: viviamo concentrati sull'immediato, sulla visibilità istantanea, mentre le nostre azioni collettive — il modo in cui produciamo, consumiamo, ci spostiamo — hanno conseguenze che dureranno ben oltre la nostra vita e quella dei nostri nipoti.
+
+Si potrebbe obiettare che il singolo individuo può fare poco di fronte a fenomeni globali come il cambiamento climatico, e che la responsabilità principale ricada su Stati e grandi aziende. È vero solo in parte: le scelte quotidiane di milioni di persone — come muoversi, cosa acquistare, come informarsi — orientano nel tempo anche le politiche pubbliche e le strategie delle imprese, come dimostrano i cambiamenti nei consumi alimentari o nella mobilità degli ultimi anni.
+
+Per questo credo che la vera sfida della nostra generazione sia imparare a pensare su due scale di tempo insieme: quella breve, dei social e dell'attualità, e quella lunga, geologica, delle conseguenze ambientali. Solo tenendo insieme questi due sguardi possiamo trasformare l'attenzione effimera in cui viviamo in una responsabilità duratura verso chi verrà dopo di noi.`,
+    commento:[
+      "Riprendere l'immagine del testo-guida (il «quarto d'ora» di Warhol) nella prima riga dimostra comprensione senza limitarsi a un riassunto.",
+      "L'antitesi («il singolo può fare poco») è confutata con dati di tendenza reali, non con un'opinione generica.",
+      "La chiusura propone un metodo di pensiero («due scale di tempo insieme») più che una semplice morale."
+    ],
+    quiz:[
+      {q:"Riprendere subito, nell'incipit, l'immagine forte proposta dal testo-guida serve a:", opts:["Allungare il testo","Dimostrare di aver capito il testo prima di argomentare","Evitare di scrivere un'introduzione","Sostituire la tesi personale"], correct:1},
+      {q:"Quale contrapposizione temporale è al centro dello svolgimento?", opts:["Passato e futuro della tecnologia","Fama istantanea dei social e tracce durature della civiltà sul pianeta","Guerra Fredda e presente","Infanzia ed età adulta"], correct:1},
+      {q:"Come viene confutata l'obiezione «il singolo può fare poco»?", opts:["Non viene confutata","Con dati di tendenza reali sui cambiamenti nei consumi e nella mobilità","Con una citazione letteraria","Ignorandola completamente"], correct:1},
+      {q:"Che cos'è, secondo il testo, l'Antropocene?", opts:["Un'epoca politica","L'epoca geologica in cui l'uomo lascia tracce durature sul pianeta","Un movimento artistico","Un tipo di social network"], correct:1},
+      {q:"Che cosa propone la conclusione dello svolgimento?", opts:["Di ignorare i social","Di pensare contemporaneamente su una scala di tempo breve e su una lunga, geologica","Di tornare a uno stile di vita del passato","Di lasciare la responsabilità solo agli Stati"], correct:1}
+    ]
+  },
+  {
+    numero:"C1", tipo:"C", titolo:"L'eredità di Borsellino: i giovani e la cultura della legalità",
+    fonte:"Paolo Borsellino, «I giovani, la mia speranza», intervista, Epoca, 1992 — traccia ufficiale Tipologia C, Esame di Stato 2025 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo, tratto da un'intervista del 1992, indicava nei giovani la vera speranza contro la criminalità organizzata, più che nella sola repressione.",
+    domande:[
+      "In quale contesto storico si colloca l'intervista di Borsellino citata nel testo?",
+      "Perché, secondo lo svolgimento, la sola repressione giudiziaria non basta a sconfiggere la mafia?",
+      "A quali forme di illegalità quotidiana viene collegato il tema della legalità nello svolgimento?",
+      "Che cosa chiedeva Borsellino ai giovani, secondo l'intervista richiamata nel testo?"
+    ],
+    metodo:"I temi su mafia e legalità rischiano di restare retorici. Evitalo collegando il discorso a forme di illegalità quotidiana (piccola corruzione, evasione, mancato rispetto delle regole), più vicine all'esperienza diretta.",
+    testo:`Paolo Borsellino, magistrato ucciso dalla mafia nel 1992, indicava nei giovani la vera speranza per sconfiggere la criminalità organizzata: non le manette, da sole, ma un cambiamento culturale profondo, capace di rendere la mafia socialmente inaccettabile fin dall'infanzia.
+
+Condivido questa prospettiva, perché la storia italiana dimostra che la sola repressione giudiziaria, pur necessaria, non basta a estirpare fenomeni come la mafia, radicati in un tessuto sociale ed economico che spesso offre ai giovani, soprattutto nei contesti più poveri, poche alternative legali. Dove lo Stato è debole o assente, la criminalità organizzata si presenta come un'opportunità di lavoro, di identità, persino di protezione.
+
+Per questo la scuola ha un ruolo cruciale, forse ancora più importante di quanto si pensi: educare alla legalità non significa solo spiegare cosa dice il codice penale, ma costruire esperienze concrete di cittadinanza attiva, far conoscere le storie di chi ha pagato con la vita l'impegno contro la mafia, come lo stesso Borsellino, e mostrare esempi positivi di riscatto sociale nei territori più difficili.
+
+Si potrebbe obiettare che parlare di legalità in classe rischia di restare un esercizio astratto, lontano dalla vita reale degli studenti. È un rischio concreto, che si supera solo collegando questi temi all'esperienza quotidiana: la corruzione, l'evasione fiscale, il rispetto delle regole nella vita di tutti i giorni sono anch'esse forme di illegalità che riguardano tutti, non solo i contesti di criminalità organizzata.
+
+Investire sui giovani, come chiedeva Borsellino, significa allora costruire cittadini capaci di riconoscere e rifiutare ogni forma di illegalità, grande o piccola che sia.`,
+    commento:[
+      "L'autocritica esplicita («rischia di restare astratto») anticipa un'obiezione realistica del lettore: tecnica che rende il testo più maturo.",
+      "Il collegamento tra grande criminalità e piccola illegalità quotidiana evita la retorica e riporta il tema all'esperienza dello studente.",
+      "La citazione diretta della fonte (Borsellino, 1992) all'inizio situa subito il lettore nel contesto storico."
+    ],
+    quiz:[
+      {q:"I temi su mafia e legalità rischiano soprattutto di:", opts:["Essere troppo brevi","Restare retorici se non collegati a forme di illegalità quotidiana vicine all'esperienza dello studente","Non poter citare persone reali","Essere vietati dal Ministero"], correct:1},
+      {q:"Secondo lo svolgimento, perché la sola repressione giudiziaria non basta contro la mafia?", opts:["Perché i giudici sono corrotti","Perché la mafia è radicata in un tessuto sociale che offre poche alternative legali dove lo Stato è debole","Perché la mafia non esiste più","Perché la scuola non può fare nulla"], correct:1},
+      {q:"A quali forme di illegalità quotidiana lo svolgimento collega il tema della mafia?", opts:["Solo ai reati violenti","Alla corruzione, all'evasione fiscale e al mancato rispetto delle regole quotidiane","Al bullismo scolastico","Alle multe stradali"], correct:1},
+      {q:"Che tecnica retorica usa il testo quando scrive «si potrebbe obiettare che... è un rischio concreto»?", opts:["Ignora l'obiezione","Riconosce un'obiezione realistica e la affronta apertamente","Cambia argomento","Cita una fonte diversa"], correct:1},
+      {q:"Che cosa chiedeva Borsellino, secondo l'intervista richiamata nel testo?", opts:["Più carceri","Investire sui giovani per un cambiamento culturale, non solo sulla repressione","L'abolizione della magistratura","Meno scuola e più lavoro"], correct:1}
+    ]
+  },
+  {
+    numero:"C2", tipo:"C", titolo:"L'indignazione sui social serve davvero a qualcosa?",
+    fonte:"Anna Meldolesi e Chiara Lalli, «L'indignazione è il motore del mondo social. Ma serve a qualcosa» — traccia ufficiale Tipologia C, Esame di Stato 2025 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo si interrogava sul valore reale dell'indignazione diffusa sui social network, chiedendosi se produca cambiamenti concreti o resti un fenomeno emotivo fine a sé stesso.",
+    domande:[
+      "Quale domanda pongono le autrici a proposito dell'indignazione sui social?",
+      "In quale caso, secondo lo svolgimento, l'indignazione online ha un valore reale?",
+      "Che cos'è il fenomeno chiamato «slacktivism» citato nel testo?",
+      "Qual è la domanda conclusiva a cui arriva lo svolgimento?"
+    ],
+    metodo:"Nei temi sui comportamenti sociali online, introduci sempre il meccanismo con precisione (qui: l'indignazione che si accende e si spegne in fretta) prima di giudicarlo, per mostrare comprensione oltre che opinione.",
+    testo:`Un video, un post, una notizia: bastano pochi secondi perché l'indignazione collettiva si accenda sui social, si diffonda, e altrettanto rapidamente si spenga per lasciare spazio alla prossima causa. Anna Meldolesi e Chiara Lalli si chiedono se questa indignazione permanente serva davvero a qualcosa, o se sia solo un rumore emotivo senza conseguenze reali.
+
+Penso che l'indignazione online abbia un valore quando riesce a trasformarsi in qualcosa di concreto: una raccolta firme, una pressione politica reale, un cambiamento di comportamento diffuso. Storicamente, alcune importanti battaglie per i diritti civili sono partite da un'ondata di indignazione pubblica canalizzata verso obiettivi precisi.
+
+È vero, però, che sui social l'indignazione rischia spesso di restare fine a sé stessa: un like o una condivisione danno la sensazione di aver «fatto qualcosa», quando in realtà non è cambiato nulla nella realtà dei fatti. Questo fenomeno, talvolta chiamato «slacktivism», rischia di sostituire l'impegno reale con un gesto simbolico e poco costoso.
+
+Per questo credo che la vera domanda non sia se indignarsi sia giusto o sbagliato, ma cosa si fa dopo essersi indignati: se l'indignazione resta un post, serve a poco; se diventa il primo passo di un'azione concreta, può davvero contribuire al cambiamento.`,
+    commento:[
+      "Introdurre subito il meccanismo (indignazione che si accende e si spegne in fretta) mostra comprensione del fenomeno prima di giudicarlo.",
+      "Il riferimento storico ai movimenti per i diritti civili dà spessore all'argomentazione senza scadere nel generico.",
+      "Il termine tecnico «slacktivism» è usato e spiegato in una riga: buona pratica quando si introduce un concetto specialistico."
+    ],
+    quiz:[
+      {q:"Qual è la domanda centrale posta dal testo di Meldolesi e Lalli?", opts:["Se i social vadano vietati","Se l'indignazione sui social serva davvero a qualcosa","Se i giovani usino troppo i social","Se l'indignazione sia sempre sbagliata"], correct:1},
+      {q:"Quando, secondo lo svolgimento, l'indignazione ha un valore reale?", opts:["Sempre, in ogni caso","Quando si trasforma in azione concreta (raccolta firme, pressione politica, ecc.)","Mai, è sempre inutile","Solo se diventa virale"], correct:1},
+      {q:"Che cosa indica il termine «slacktivism»?", opts:["Un tipo di attivismo violento","Un attivismo simbolico e poco costoso che sostituisce l'impegno reale","Una forma di censura","Un tipo di algoritmo social"], correct:1},
+      {q:"Quale esempio storico viene usato per sostenere il valore dell'indignazione?", opts:["La rivoluzione industriale","Alcune battaglie per i diritti civili nate da ondate di indignazione pubblica","La caduta dell'impero romano","L'invenzione di internet"], correct:1},
+      {q:"Qual è la domanda conclusiva proposta dallo svolgimento?", opts:["Se i social siano legali","Non se indignarsi sia giusto, ma cosa si fa concretamente dopo essersi indignati","Chi ha inventato i social","Quanti utenti hanno i social"], correct:1}
+    ]
+  }
+],
+"2026": [
+  {
+    numero:"B1", tipo:"B", titolo:"L'Assemblea Costituente: regole comuni oltre le divisioni politiche",
+    fonte:"Giuseppe Saragat, discorso di insediamento all'Assemblea Costituente, 1946 — traccia ufficiale Tipologia B (ambito storico), Esame di Stato 2026 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo, tratto dal discorso di insediamento di Giuseppe Saragat all'Assemblea Costituente, testimoniava l'incontro tra forze politiche diverse nella scrittura della Costituzione repubblicana.",
+    domande:[
+      "In quale contesto storico si colloca il discorso di Giuseppe Saragat citato nel testo?",
+      "Quali forze politiche diverse parteciparono alla stesura della Costituzione, secondo il testo?",
+      "In che senso lo spirito di mediazione, più che l'assenza di conflitti, rese possibile la Costituzione?",
+      "Quale principio, secondo la conclusione, resta valido indipendentemente dal contesto storico del 1946?"
+    ],
+    metodo:"Collocare subito il testo nel suo contesto storico è imprescindibile in una traccia di ambito storico, obbligatoria dal 2024: non dare per scontato che il lettore conosca già i dettagli dell'evento.",
+    testo:`Il discorso di insediamento di Giuseppe Saragat all'Assemblea Costituente, nel 1946, testimonia un momento irripetibile della storia italiana: uomini di tradizioni politiche profondamente diverse - cattolici, socialisti, comunisti, liberali - si trovarono a scrivere insieme le regole fondamentali della nuova Repubblica, subito dopo la fine di una guerra e di una dittatura.
+
+Trovo che questo episodio insegni qualcosa di prezioso anche oggi: le regole comuni di una comunità, la Costituzione in primo luogo, funzionano solo se sono percepite come superiori alle appartenenze politiche del momento, non come la vittoria di una parte sull'altra. Fu proprio questo spirito di mediazione, e non l'assenza di conflitti, a rendere possibile la nostra Costituzione.
+
+Si potrebbe obiettare che oggi il clima politico sia troppo polarizzato per ripetere un'esperienza simile, e che il compromesso venga spesso percepito come debolezza più che come virtù. È un'osservazione realistica: il linguaggio pubblico attuale premia raramente la mediazione.
+
+Per questo credo che la lezione dell'Assemblea Costituente non riguardi tanto il metodo di allora, difficilmente riproducibile identico, quanto il principio che lo ha reso possibile: la capacità di distinguere le proprie idee di parte dalle regole comuni necessarie a tutti, un principio che nessuna epoca dovrebbe permettersi di dimenticare.`,
+    commento:[
+      "Collocare subito il testo nel suo contesto storico (1946, Assemblea Costituente) è imprescindibile in una traccia di ambito storico.",
+      "L'antitesi sul clima politico attuale mostra capacità di collegare passato e presente senza forzature.",
+      "La conclusione distingue «metodo storico irripetibile» da «principio ancora valido»: tecnica efficace per evitare paragoni ingenui tra epoche diverse."
+    ],
+    quiz:[
+      {q:"In quale anno si tenne il discorso di Saragat citato nel testo?", opts:["1946","1948","1861","1922"], correct:0},
+      {q:"Quali forze politiche collaborarono alla stesura della Costituzione, secondo lo svolgimento?", opts:["Solo i liberali","Cattolici, socialisti, comunisti, liberali","Solo i monarchici","Solo il partito di Saragat"], correct:1},
+      {q:"Che cosa rese possibile, secondo il testo, la scrittura della Costituzione?", opts:["L'assenza totale di conflitti","Lo spirito di mediazione tra visioni politiche diverse","Un colpo di stato","La decisione di un solo partito"], correct:1},
+      {q:"Quale rischio viene riconosciuto nell'antitesi sul presente?", opts:["Che la Costituzione sia da riscrivere","Che il compromesso sia oggi percepito come debolezza in un clima polarizzato","Che l'Assemblea Costituente non sia mai esistita","Che i partiti di oggi siano troppo pochi"], correct:1},
+      {q:"Qual è il principio che la conclusione ritiene ancora valido oggi?", opts:["Distinguere le proprie idee di parte dalle regole comuni necessarie a tutti","Vincere sempre sull'avversario politico","Scrivere una nuova costituzione ogni anno","Evitare ogni discussione pubblica"], correct:0}
+    ]
+  },
+  {
+    numero:"B2", tipo:"B", titolo:"Comunicare la scienza: chiarezza senza banalizzazione",
+    fonte:"Piero Bianucci, «Te lo dico con parole tue. La scienza di scrivere per farsi capire» — traccia ufficiale Tipologia B, Esame di Stato 2026 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo del giornalista scientifico Piero Bianucci sosteneva l'importanza di comunicare la scienza con parole comprensibili a chi ascolta, senza perdere rigore.",
+    domande:[
+      "Che cosa intende Bianucci con l'espressione «te lo dico con parole tue»?",
+      "Perché, secondo lo svolgimento, la chiarezza nella comunicazione scientifica è oggi particolarmente importante?",
+      "Quale rischio viene riconosciuto quando si semplifica troppo un argomento scientifico?",
+      "A quali temi recenti si collega, secondo il testo, il rischio della cattiva comunicazione scientifica?"
+    ],
+    metodo:"Quando il titolo del testo-guida è già una frase efficace, spiegala e rendila operativa fin dal primo paragrafo, invece di limitarti a citarla.",
+    testo:`Piero Bianucci, giornalista scientifico, sostiene che comunicare bene la scienza significhi saperla raccontare con le parole di chi ascolta, non con il gergo di chi la pratica: «te lo dico con parole tue», appunto, non con le mie.
+
+Condivido l'importanza di questo principio, soprattutto in un'epoca in cui la disinformazione scientifica - dai vaccini al cambiamento climatico - si diffonde spesso più velocemente della correzione degli esperti. Se uno scienziato non riesce a farsi capire da chi non ha la sua formazione, il vuoto comunicativo che lascia viene occupato da chi promette risposte semplici, anche quando sono sbagliate.
+
+Qualcuno potrebbe obiettare che semplificare troppo un argomento scientifico rischi di deformarlo, trasformando la complessità della ricerca in slogan fuorvianti, magari a scopo di visibilità mediatica più che di reale comprensione. È un rischio concreto, che negli ultimi anni abbiamo visto realizzarsi più volte nella comunicazione di temi delicati come le pandemie.
+
+Per questo penso che la vera sfida per chi comunica la scienza non sia scegliere tra rigore e chiarezza, ma tenerli insieme: usare esempi, immagini, analogie comprensibili senza mai perdere l'onestà intellettuale nel riconoscere anche i limiti e le incertezze della conoscenza scientifica in un dato momento.`,
+    commento:[
+      "Il titolo stesso della traccia («te lo dico con parole tue») viene subito spiegato e reso operativo come principio guida.",
+      "Il collegamento con la disinformazione scientifica attuale (vaccini, clima) rende il tema concreto e attuale.",
+      "La conclusione («non scegliere tra rigore e chiarezza, ma tenerli insieme») è applicabile a molti temi che oppongono due valori entrambi legittimi."
+    ],
+    quiz:[
+      {q:"Che cosa significa, secondo il testo, comunicare la scienza «con parole tue»?", opts:["Usare solo termini tecnici","Raccontarla con le parole di chi ascolta, non con il gergo tecnico","Tradurla in un'altra lingua","Scriverla solo per altri scienziati"], correct:1},
+      {q:"Perché la chiarezza scientifica è importante secondo lo svolgimento?", opts:["Per vendere più libri","Per contrastare la rapida diffusione della disinformazione","Per evitare di studiare troppo","Perché lo richiede la legge"], correct:1},
+      {q:"Quale rischio comporta una semplificazione eccessiva?", opts:["Rendere la scienza troppo lunga da spiegare","Deformare la complessità scientifica in slogan fuorvianti","Renderla troppo costosa","Renderla illegale"], correct:1},
+      {q:"A quali temi recenti si collega il rischio della cattiva comunicazione scientifica?", opts:["Pandemie, vaccini, cambiamento climatico","Solo lo sport","Solo l'economia","Solo la politica estera"], correct:0},
+      {q:"Come si conclude lo svolgimento?", opts:["Scegliendo solo la chiarezza","Scegliendo solo il rigore","Proponendo di tenere insieme rigore scientifico e chiarezza comunicativa","Proponendo di eliminare la comunicazione scientifica"], correct:2}
+    ]
+  },
+  {
+    numero:"B3", tipo:"B", titolo:"Il confine tra adolescenza ed età adulta ha ancora senso?",
+    fonte:"Frank Furedi, «I confini contano. Perché l'umanità deve riscoprire l'arte di tracciare frontiere» — traccia ufficiale Tipologia B, Esame di Stato 2026 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo-guida sosteneva che, pur sfumati rispetto al passato, i confini tra le età della vita restano utili per orientare la crescita personale.",
+    domande:[
+      "In che modo sono cambiati, secondo il testo, i confini tra adolescenza ed età adulta rispetto al passato?",
+      "Perché, secondo Furedi, i confini tra le età della vita restano comunque importanti?",
+      "Quale obiezione economica viene riconosciuta come fondata nello svolgimento?",
+      "In che senso il confine da difendere non sarebbe un'età anagrafica ma un atteggiamento interiore?"
+    ],
+    metodo:"Quando la traccia propone già una tesi (qui: «i confini contano»), non limitarti ad accettarla o respingerla in blocco: distingui ciò che condividi da ciò che vuoi precisare.",
+    testo:`Un tempo diventare adulti coincideva con eventi precisi: finire la scuola, trovare un lavoro stabile, sposarsi, avere figli. Oggi questi confini si sono fatti sfumati: si resta più a lungo nella casa dei genitori, si cambiano più lavori, si rimanda ogni scelta definitiva. Frank Furedi sostiene che, nonostante questo, i confini tra le età della vita restano importanti, perché aiutano a orientarsi e a maturare un senso di responsabilità.
+
+Sono d'accordo con questa idea, pur con una precisazione. Non credo che il problema sia l'assenza di confini rigidi come in passato: la società cambia, ed è naturale che cambino anche i tempi della crescita personale. Il rischio vero, semmai, è che l'assenza di tappe riconoscibili si trasformi in un'assenza di responsabilità, in una condizione di "adultescenza" prolungata in cui non ci si assume mai fino in fondo doveri verso sé stessi e verso gli altri.
+
+Qualcuno potrebbe obiettare che rimandare le scelte importanti sia oggi una necessità, non una scelta: precarietà lavorativa, affitti alti, incertezza economica rendono difficile, per molti giovani, l'indipendenza che un tempo segnava l'ingresso nell'età adulta. È un'obiezione fondata, che sposta parte della responsabilità dal singolo alle condizioni sociali ed economiche del suo tempo.
+
+Per questo credo che il vero confine da difendere non sia un'età anagrafica precisa, ma un atteggiamento interiore: la capacità di assumersi gradualmente responsabilità crescenti, verso lo studio, il lavoro, le relazioni, indipendentemente dai tempi imposti dall'economia. Diventare adulti, in questo senso, resta un processo, ma un processo che va comunque intrapreso, senza rimandarlo indefinitamente.`,
+    commento:[
+      "«Sono d'accordo, pur con una precisazione»: questa formula permette di dialogare con la tesi del testo-guida senza né copiarla né rifiutarla del tutto.",
+      "L'obiezione economica (precarietà, affitti) mostra consapevolezza sociale e impedisce che il tema scada in un giudizio moralistico verso i coetanei.",
+      "Spostare il confine da «età anagrafica» ad «atteggiamento interiore» mostra come una tesi personale possa evolvere quella del testo-guida invece di ripeterla."
+    ],
+    quiz:[
+      {q:"Quando la traccia B propone già una tesi, la strategia migliore è:", opts:["Copiarla identica come propria tesi","Respingerla sempre in blocco per mostrare originalità","Distinguere ciò che si condivide da ciò che si vuole precisare","Ignorarla e scrivere di un altro argomento"], correct:2},
+      {q:"Qual è la precisazione che lo svolgimento introduce rispetto alla tesi di Furedi?", opts:["Che i confini non contano affatto","Che il vero rischio è l'assenza di responsabilità, non l'assenza di confini rigidi","Che bisogna tornare ai modelli di vita del passato","Che l'età adulta non esiste più"], correct:1},
+      {q:"Quale obiezione economica viene riconosciuta come fondata nello svolgimento?", opts:["Nessuna, il tema resta solo culturale","Che precarietà lavorativa e affitti alti rendono difficile l'indipendenza economica dei giovani","Che i giovani guadagnano troppo","Che la scuola dura troppo poco"], correct:1},
+      {q:"Dove sposta il «confine» la conclusione dello svolgimento?", opts:["Da un'età anagrafica precisa a un atteggiamento interiore di responsabilità crescente","Dall'Italia all'estero","Dalla famiglia alla scuola","Non lo sposta, resta sull'età anagrafica"], correct:0},
+      {q:"Che espressione critica viene usata per descrivere chi rimanda indefinitamente le responsabilità?", opts:["\"Generazione perduta\"","\"Adultescenza\" prolungata","\"Età di mezzo\"","\"Crisi di identità\""], correct:1}
+    ]
+  },
+  {
+    numero:"C1", tipo:"C", titolo:"Sapere come funziona toglie la meraviglia?",
+    fonte:"Wenke Husmann, «Funziona a meraviglia», Internazionale, gennaio 2026 — traccia ufficiale Tipologia C, Esame di Stato 2026 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo rifletteva sul rapporto tra conoscenza scientifica e capacità di stupirsi, chiedendosi se sapere come funzionano le cose tolga o arricchisca il senso di meraviglia.",
+    domande:[
+      "Quale paradosso viene posto all'inizio del testo di Husmann?",
+      "Quale esempio viene usato nello svolgimento per mostrare che la conoscenza non spegne la meraviglia?",
+      "Che effetto di «assuefazione» viene descritto a proposito delle tecnologie recenti?",
+      "Qual è la sfida indicata nella conclusione dello svolgimento?"
+    ],
+    metodo:"Nei temi che partono da un paradosso o da una domanda retorica, riprendi quella stessa domanda in apertura: è un modo naturale ed efficace per introdurre il tema senza premesse generiche.",
+    testo:`Sapere esattamente come funziona un fenomeno - un arcobaleno, un'aurora boreale, un'intelligenza artificiale - toglie davvero l'incanto, o può anzi arricchirlo? Wenke Husmann riflette su questo apparente paradosso: viviamo nell'epoca in cui quasi tutto può essere spiegato tecnicamente, eppure il bisogno di stupirsi non è affatto scomparso.
+
+Credo che la meraviglia autentica non dipenda dall'ignoranza, ma da uno sguardo capace di restare aperto anche di fronte a ciò che si conosce. Un astrofisico che studia le stelle da una vita non smette di restare colpito dalla loro bellezza: la conoscenza, in questo caso, non spegne lo stupore, lo rende più consapevole.
+
+È vero che oggi molte meraviglie tecnologiche - un video generato in pochi secondi, una risposta immediata a qualsiasi domanda - vengono vissute con crescente indifferenza, quasi fossero scontate. Questo effetto di assuefazione è reale e rischia di appiattire la nostra capacità di stupirci di fronte a cose straordinarie.
+
+Per questo penso che la vera sfida non sia scegliere tra sapere e stupirsi, ma allenare consapevolmente uno sguardo capace di meraviglia anche di fronte a ciò che comprendiamo: una disposizione che, lontano dall'essere ingenua, è forse la forma più matura di curiosità verso il mondo.`,
+    commento:[
+      "Aprire con una domanda retorica che riprende il paradosso del testo-guida è una tecnica efficace per catturare l'attenzione fin dalle prime righe.",
+      "L'esempio dell'astrofisico rende concreto un concetto altrimenti filosofico (meraviglia consapevole vs meraviglia ingenua).",
+      "Riconoscere l'effetto di assuefazione tecnologica come rischio reale evita un ottimismo ingenuo sul tema."
+    ],
+    quiz:[
+      {q:"Quale paradosso apre lo svolgimento?", opts:["Se conoscere il funzionamento delle cose tolga o arricchisca la meraviglia","Se la scienza sia utile o inutile","Se la tecnologia sia costosa o economica","Se l'incanto esista davvero"], correct:0},
+      {q:"Quale esempio dimostra che la conoscenza non spegne lo stupore?", opts:["Un turista in vacanza","L'astrofisico che studia le stelle da una vita e resta colpito dalla loro bellezza","Un bambino che non sa nulla di scienza","Un venditore di telescopi"], correct:1},
+      {q:"Che cosa indica l'effetto di «assuefazione» citato nel testo?", opts:["L'entusiasmo crescente per la tecnologia","L'indifferenza crescente verso meraviglie tecnologiche ormai considerate scontate","La paura della tecnologia","L'aumento dei prezzi tecnologici"], correct:1},
+      {q:"Qual è la sfida proposta nella conclusione?", opts:["Smettere di studiare scienza","Allenare uno sguardo capace di meraviglia anche di fronte a ciò che si comprende","Tornare all'ignoranza per stupirsi di più","Evitare la tecnologia"], correct:1},
+      {q:"Qual è la tesi centrale dello svolgimento?", opts:["La scienza distrugge sempre la meraviglia","La conoscenza scientifica non uccide la meraviglia, se coltivata consapevolmente","La meraviglia è solo per i bambini","La tecnologia è sempre negativa"], correct:1}
+    ]
+  },
+  {
+    numero:"C2", tipo:"C", titolo:"Il valore della fatica in un tempo di risultati immediati",
+    fonte:"Mario Calabresi, «Alzarsi all'alba» — traccia ufficiale Tipologia C, Esame di Stato 2026 (fonte: Ministero dell'Istruzione e del Merito, istruzione.it)",
+    guida:"Il testo raccontava la fatica come un'esperienza sempre meno centrale nell'immaginario dei giovani, pur restando concreta nella vita di molte persone.",
+    domande:[
+      "In che senso, secondo il testo, la fatica sta scomparendo dall'immaginario delle nuove generazioni?",
+      "Quale stereotipo generazionale viene esplicitamente respinto nello svolgimento?",
+      "Perché, secondo lo svolgimento, la fatica del passato non va sempre idealizzata?",
+      "Quale distinzione finale propone il testo tra tipi diversi di fatica?"
+    ],
+    metodo:"Attento agli stereotipi generazionali: un buon tema di attualità non accusa né difende in blocco «i giovani», ma distingue i fenomeni culturali dai singoli individui.",
+    testo:`Mario Calabresi, nel suo libro Alzarsi all'alba, racconta la fatica come un'esperienza che sembra progressivamente scomparire dall'immaginario delle nuove generazioni, pur restando molto presente nella vita quotidiana di chi svolge lavori manuali o si trova in condizioni economiche difficili. È un'osservazione che mi sembra colga un cambiamento reale nel modo in cui pensiamo all'impegno e al sacrificio.
+
+Molti miei coetanei associano oggi il successo più alla rapidità e alla facilità — diventare famosi con un video, arricchirsi con un investimento fortunato — che alla fatica prolungata nel tempo. Questo non significa che i giovani siano più pigri delle generazioni precedenti, come talvolta si sente dire in modo semplicistico, ma che i modelli culturali dominanti, amplificati dai social, celebrano soprattutto risultati immediati.
+
+Allo stesso tempo, sarebbe sbagliato idealizzare la fatica del passato come se fosse sempre stata un valore positivo: molte fatiche di ieri erano imposte da condizioni di sfruttamento, non scelte liberamente, e non è un progresso da rimpiangere il fatto che oggi si lavori, in molti settori, con maggiore sicurezza e minore usura fisica.
+
+Credo però che esista una fatica diversa, quella dello studio prolungato, dell'allenamento costante, della pratica ripetuta necessaria per imparare davvero qualcosa: questa fatica resta insostituibile, perché nessuna scorciatoia tecnologica può sostituire il tempo necessario a costruire una competenza solida. Per questo penso che il compito della scuola sia proprio insegnare a distinguere le fatiche inutili da quelle formative, e a non avere paura di queste ultime, anche quando i risultati non sono immediati.`,
+    commento:[
+      "La frase «questo non significa che i giovani siano più pigri» smonta subito uno stereotipo generazionale: passaggio molto apprezzato perché mostra equilibrio di giudizio.",
+      "Riconoscere che la fatica del passato era spesso sfruttamento, non virtù, evita la trappola della nostalgia moralistica.",
+      "La distinzione finale tra «fatica inutile» e «fatica formativa» restringe un tema molto ampio a un'idea precisa e memorabile."
+    ],
+    quiz:[
+      {q:"Un buon tema di attualità sui giovani dovrebbe soprattutto evitare di:", opts:["Usare esempi personali","Accusare o difendere in blocco «i giovani» come categoria unica, senza distinguere","Prendere posizione","Collegarsi al testo-guida"], correct:1},
+      {q:"Quale stereotipo viene esplicitamente respinto nello svolgimento?", opts:["Che i giovani siano più intelligenti dei genitori","Che i giovani siano semplicemente più pigri delle generazioni precedenti","Che i social siano dannosi","Che la scuola sia inutile"], correct:1},
+      {q:"Come viene giudicata, nello svolgimento, la fatica del passato?", opts:["Sempre un valore positivo da rimpiangere","Spesso imposta da condizioni di sfruttamento, quindi non semplicemente da idealizzare","Del tutto identica a quella di oggi","Inesistente"], correct:1},
+      {q:"Quale distinzione finale propone il testo per orientare il giudizio sulla fatica?", opts:["Fatica maschile e femminile","Fatica fisica e fatica mentale","Fatica inutile e fatica formativa","Fatica antica e fatica moderna"], correct:2},
+      {q:"Quale compito viene assegnato alla scuola nella conclusione?", opts:["Eliminare ogni forma di fatica dallo studio","Insegnare a distinguere le fatiche inutili da quelle formative, senza temere queste ultime","Vietare l'uso dei social a scuola","Premiare solo i risultati immediati"], correct:1}
+    ]
+  }
+]
+};
+
+function buildNav(){
+  const tabs = [{id:"guida", label:"📖 Guida"}, ...anni.map(a=>({id:a,label:a})), {id:"checklist", label:"✅ Checklist"}];
+  const nav = document.getElementById("nav");
+  tabs.forEach((t,i)=>{
+    const b = document.createElement("button");
+    b.textContent = t.label;
+    b.dataset.tab = t.id;
+    if(i===0) b.classList.add("active");
+    b.onclick = ()=> showTab(t.id);
+    nav.appendChild(b);
+  });
+}
+
+function buildQuiz(anno, idx, quiz){
+  let html = `<div class="quiz-box" id="quiz-${anno}-${idx}"><h4>Quiz di verifica — 5 domande</h4>`;
+  quiz.forEach((q, qi)=>{
+    html += `<div class="quiz-q" data-correct="${q.correct}">
+      <p class="qtext">${qi+1}. ${q.q}</p>`;
+    q.opts.forEach((opt, oi)=>{
+      html += `<label><input type="radio" name="q-${anno}-${idx}-${qi}" value="${oi}"> ${opt}</label>`;
+    });
+    html += `</div>`;
+  });
+  html += `<button class="quiz-btn" onclick="checkQuiz('${anno}','${idx}')">Correggi il quiz</button>
+    <div class="quiz-result" id="result-${anno}-${idx}"></div></div>`;
+  return html;
+}
+
+function checkQuiz(anno, idx){
+  const box = document.getElementById(`quiz-${anno}-${idx}`);
+  const questions = box.querySelectorAll(".quiz-q");
+  let score = 0;
+  questions.forEach((qEl, qi)=>{
+    const correct = parseInt(qEl.dataset.correct);
+    const labels = qEl.querySelectorAll("label");
+    const selected = qEl.querySelector(`input[name="q-${anno}-${idx}-${qi}"]:checked`);
+    labels.forEach(l=> l.classList.remove("correct","wrong"));
+    labels[correct].classList.add("correct");
+    if(selected){
+      const selVal = parseInt(selected.value);
+      if(selVal === correct){ score++; }
+      else { labels[selVal].classList.add("wrong"); }
+    }
+  });
+  const result = document.getElementById(`result-${anno}-${idx}`);
+  let msg = `Punteggio: ${score}/5 — `;
+  if(score === 5) msg += "ottimo, hai compreso a fondo sia la tipologia sia lo svolgimento!";
+  else if(score >= 3) msg += "buon lavoro, rivedi le risposte evidenziate in rosso.";
+  else msg += "rileggi lo svolgimento e il commento, poi riprova.";
+  result.textContent = msg;
+}
+
+function buildYearTab(anno){
+  const temi = dati[anno];
+  let html = `<div class="year-block"><div class="year-title">Prima Prova ${anno}</div>
+    <div class="year-sub">Tre tracce di Tipologia B (testo argomentativo) e due di Tipologia C (attualità) — tutte le tracce ufficiali di quell'anno.</div>`;
+  temi.forEach((t, idx)=>{
+    const bodyId = `body-${anno}-${idx}`;
+    html += `
+    <div class="tema-card">
+      <div class="tema-head" onclick="toggleTema('${bodyId}', this)">
+        <div class="tema-head-text">
+          <span class="tipo-badge badge-${t.tipo}">${t.numero}</span><strong>${t.titolo}</strong>
+          <span class="fonte">${t.fonte}</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tema-body" id="${bodyId}">
+        <h4>Che cosa chiedeva la traccia</h4>
+        <p>${t.guida}</p>
+        <h4>Domande di comprensione — tipiche di questa traccia</h4>
+        <div class="domande"><ol>${t.domande.map(d=>`<li>${d}</li>`).join("")}</ol></div>
+        <h4>Come affrontarla — consiglio del metodo</h4>
+        <p>${t.metodo}</p>
+        <h4>Svolgimento modello (elaborato originale, a scopo didattico)</h4>
+        <div class="svolgimento">${t.testo.split("\n\n").map(p=>`<p>${p}</p>`).join("")}</div>
+        <h4>Commento — perché funziona</h4>
+        <div class="commento"><ul>${t.commento.map(c=>`<li>${c}</li>`).join("")}</ul></div>
+        ${buildQuiz(anno, idx, t.quiz)}
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+
+function toggleTema(id, headEl){
+  const body = document.getElementById(id);
+  const chevron = headEl.querySelector(".chevron");
+  const opening = !body.classList.contains("open");
+  body.classList.toggle("open");
+  chevron.style.transform = opening ? "rotate(180deg)" : "rotate(0deg)";
+}
+
+function buildGuida(){
+  return `
+  <div class="note-box">
+    <strong>Una nota importante sulle fonti.</strong> Le tracce ufficiali del Ministero contengono spesso ampi estratti di opere e articoli coperti da diritto d'autore (libri di Piero Angela, Rita Levi Montalcini, Telmo Pievani, articoli di giornale, ecc.). Per questo motivo qui non viene riportato il testo integrale dei brani-guida, ma una sintesi fedele del loro contenuto, con indicazione precisa di autore, titolo e fonte. Per leggere il testo integrale ufficiale, l'unica fonte corretta e legale è il sito del <strong>Ministero dell'Istruzione e del Merito</strong> (<a href="https://www.istruzione.it" target="_blank" rel="noopener">www.istruzione.it</a>), sezione «Esame di Stato» → «Tracce ed esempi», dove sono pubblicati i PDF ufficiali di ogni sessione dal 2005 a oggi. Gli <em>svolgimenti</em> presentati in questa app sono invece elaborati originali, scritti apposta come modelli didattici — non sono le prove ufficiali dei candidati.
+  </div>
+  <div class="note-box">
+    <strong>Nota sugli anni.</strong> Nel 2021 l'Esame di Stato si è svolto solo in forma orale a causa dell'emergenza sanitaria: non esiste una prima prova scritta di quell'anno. Il vademecum copre quindi gli <strong>ultimi quattro</strong> anni con prova scritta disponibile: <strong>2023, 2024, 2025, 2026</strong>, con tutte e tre le tracce di Tipologia B e tutte e due le tracce di Tipologia C di ciascun anno.
+  </div>
+
+  <div class="card">
+    <h2>1. Che cos'è la Prima Prova e come è organizzata</h2>
+    <p>La Prima Prova scritta dell'Esame di Stato è la prova di italiano, uguale per tutti gli indirizzi di scuola superiore. Il Ministero propone <strong>sette tracce</strong> divise in tre tipologie: due di Tipologia A (analisi del testo letterario), tre di Tipologia B (testo argomentativo) e due di Tipologia C (riflessione critica di attualità). Il candidato ne sceglie una sola, tra le sette, e ha a disposizione un massimo di <strong>sei ore</strong> di tempo (non si può comunque uscire prima che siano trascorse tre ore). La prova vale fino a 20 punti sul punteggio finale dell'esame.</p>
+    <p>Dal 2024 una delle tre tracce di Tipologia B è dedicata obbligatoriamente all'ambito storico: è quindi una buona idea ripassare, negli ultimi mesi, i grandi nodi del Novecento (guerre mondiali, Guerra Fredda, Costituzione, decolonizzazione), perché ricorrono con costanza.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Cosa distingue Tipologia B e Tipologia C</h2>
+    <table class="grid">
+      <tr><th></th><th>Tipologia B — Testo argomentativo</th><th>Tipologia C — Riflessione di attualità</th></tr>
+      <tr><td><strong>Cosa ti dà il Ministero</strong></td><td>Un testo-guida (storico, filosofico, scientifico, letterario) da analizzare, spesso con domande di comprensione</td><td>Un testo-spunto più breve, legato a un tema di attualità, con meno vincoli di analisi</td></tr>
+      <tr><td><strong>Cosa devi fare prima</strong></td><td>Riassumere la tesi dell'autore e individuare la struttura argomentativa del testo</td><td>Capire il nodo centrale del tema proposto, anche senza un'analisi testuale dettagliata</td></tr>
+      <tr><td><strong>Libertà di taglio</strong></td><td>Più vincolata al testo: la tua tesi deve dialogare esplicitamente con quella dell'autore</td><td>Più libera: puoi impostare il discorso come preferisci, purché resti pertinente al tema</td></tr>
+      <tr><td><strong>Numero di tracce proposte</strong></td><td>Tre (B1, B2, B3), una obbligatoriamente storica dal 2024</td><td>Due (C1, C2)</td></tr>
+      <tr><td><strong>Rischio principale</strong></td><td>Parafrasare il testo invece di argomentare in proprio</td><td>Scrivere un tema generico, senza una tesi precisa e senza esempi concreti</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>3. Tutte le tracce coperte dal vademecum (2023-2026)</h2>
+    <table class="grid">
+      <tr><th>Anno</th><th>B1</th><th>B2</th><th>B3</th><th>C1</th><th>C2</th></tr>
+      <tr><td>2023</td><td>Chabod, L'idea di Nazione</td><td>Piero Angela, Dieci cose che ho imparato</td><td>Fallaci, Intervista con la storia</td><td>Lettera aperta al ministro Bianchi</td><td>Belpoliti, Elogio dell'attesa</td></tr>
+      <tr><td>2024</td><td>Galasso, Storia d'Europa</td><td>Cabiddu, cittadinanza digitale</td><td>Polla-Mattiot, Riscoprire il silenzio</td><td>Levi Montalcini, Elogio dell'imperfezione</td><td>Caminito, Profili, selfie e blog</td></tr>
+      <tr><td>2025</td><td>Piers Brendon, New Deal</td><td>Maccioni, «Rispetto» parola dell'anno</td><td>Pievani, Antropocene</td><td>Borsellino, I giovani, la mia speranza</td><td>Meldolesi/Lalli, indignazione social</td></tr>
+      <tr><td>2026</td><td>Saragat, Assemblea Costituente</td><td>Bianucci, comunicare la scienza</td><td>Furedi, I confini contano</td><td>Husmann, Funziona a meraviglia</td><td>Calabresi, Alzarsi all'alba</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>4. Il metodo passo dopo passo (valido per B e C)</h2>
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Leggi tutte le tracce prima di scegliere</h4><p>Non fermarti alla prima che sembra familiare: confronta B1/B2/B3 e C1/C2 prima di decidere, valutando su quale hai davvero argomenti da sviluppare, non solo simpatia per l'argomento.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Comprendi il testo-guida (B) o il nodo del tema (C)</h4><p>Sottolinea la tesi dell'autore e le parole-chiave. Scrivi a margine, in una riga, "l'autore sostiene che...". Se non sai riassumerla in una frase, non l'hai ancora capita.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Rispondi mentalmente alle domande di comprensione</h4><p>Anche quando non sono obbligatorie come nella Tipologia A, porsi domande di comprensione (chi, cosa, perché, con quali argomenti) aiuta a controllare di aver capito il testo prima di scrivere.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Formula la tua tesi personale</h4><p>Deve essere una frase precisa, non generica: "credo che..." seguito da un'affermazione verificabile, non da un'opinione vaga come "è un argomento importante".</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Costruisci una scaletta in 5 blocchi</h4><p>Introduzione (contesto + tesi) → 2 o 3 paragrafi argomentativi con esempi → antitesi seria e sua confutazione → conclusione che rilancia, non ripete.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Scrivi usando i connettivi logici</h4><p>Sono ciò che rende un testo "argomentativo" e non un elenco di idee slegate.</p>
+    <div class="connettivi">
+      <span>per questo</span><span>tuttavia</span><span>d'altra parte</span><span>qualcuno potrebbe obiettare</span>
+      <span>è vero che... ma</span><span>di conseguenza</span><span>in altre parole</span><span>proprio per questo</span>
+      <span>non si tratta di... ma di</span><span>allo stesso tempo</span>
+    </div></div></div>
+    <div class="step"><div class="step-num">7</div><div class="step-body"><h4>Rileggi e correggi</h4><p>Controlla: ortografia e punteggiatura, lunghezza adeguata (indicativamente 3-4 colonne di foglio protocollo), coerenza tra tesi iniziale e conclusione, nessuna frase ripetuta due volte.</p></div></div>
+  </div>
+
+  <div class="card">
+    <h2>5. Come è fatto un buon paragrafo argomentativo</h2>
+    <p>Ogni paragrafo del corpo centrale può seguire questo schema minimo, molto utile per chi parte da un livello base:</p>
+    <table class="grid">
+      <tr><th>Passaggio</th><th>Funzione</th></tr>
+      <tr><td>Affermazione</td><td>Una frase che presenta un'idea a sostegno della tesi</td></tr>
+      <tr><td>Esempio o dato</td><td>Un fatto concreto, storico o di attualità, che la sostiene</td></tr>
+      <tr><td>Spiegazione</td><td>Una frase che collega l'esempio alla tesi generale ("questo dimostra che...")</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>6. Apertura efficace vs apertura debole</h2>
+    <p>L'introduzione decide gran parte della prima impressione. Confronta questi due modi di iniziare lo stesso tema (sul valore dell'attesa):</p>
+    <div class="compare">
+      <div class="bad"><span class="lab">Apertura debole</span>Oggi viviamo in un mondo dove la tecnologia è molto importante e cambia tutto quello che facciamo, anche il modo di comunicare tra le persone.</div>
+      <div class="good"><span class="lab">Apertura efficace</span>Un messaggio letto e non ancora risposto genera, in molti, un disagio quasi fisico: è il segno di quanto la nostra società abbia smesso di tollerare l'attesa.</div>
+    </div>
+    <p style="margin-top:12px;font-size:0.9em;color:var(--ink-soft);">La differenza non è la lunghezza, ma la precisione: la seconda apertura parte da un'osservazione concreta e arriva subito a un'idea, invece di restare su affermazioni generiche valide per qualsiasi tema.</p>
+  </div>
+
+  <div class="card">
+    <h2>7. Che cosa guarda la commissione (in sintesi)</h2>
+    <p>Senza entrare nei dettagli tecnici della griglia ministeriale, la valutazione della Prima Prova considera in generale quattro grandi aree, utili da tenere a mente mentre si scrive:</p>
+    <table class="grid">
+      <tr><th>Area</th><th>Che cosa significa in pratica</th></tr>
+      <tr><td>Ideazione e coerenza</td><td>Il testo ha un filo logico chiaro dall'inizio alla fine, senza contraddizioni o divagazioni</td></tr>
+      <tr><td>Correttezza linguistica</td><td>Ortografia, punteggiatura, morfosintassi e uso appropriato del lessico</td></tr>
+      <tr><td>Ampiezza delle conoscenze</td><td>Riferimenti culturali pertinenti (storici, letterari, di attualità), non generici</td></tr>
+      <tr><td>Capacità critica e originalità</td><td>Una tesi personale riconoscibile, non solo la ripetizione del testo-guida</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>8. Gestire il tempo nelle sei ore a disposizione</h2>
+    <table class="grid">
+      <tr><th>Fase</th><th>Tempo indicativo</th></tr>
+      <tr><td>Lettura di tutte le tracce e scelta</td><td>20-30 minuti</td></tr>
+      <tr><td>Comprensione del testo-guida / del tema e scaletta scritta su brutta</td><td>40-50 minuti</td></tr>
+      <tr><td>Scrittura del testo in bella</td><td>2 ore e mezza - 3 ore</td></tr>
+      <tr><td>Rilettura e correzione finale</td><td>almeno 20-30 minuti, da non saltare mai</td></tr>
+    </table>
+  </div>
+  `;
+}
+
+function buildChecklist(){
+  const voci = [
+    "Ho letto tutte le tracce prima di scegliere quella definitiva",
+    "So riassumere in una frase la tesi del testo-guida (Tipologia B) o il nodo del tema (Tipologia C)",
+    "Ho risposto mentalmente alle domande di comprensione tipiche di quella traccia",
+    "La mia tesi personale è scritta in modo chiaro fin dall'introduzione",
+    "Ogni paragrafo del corpo centrale ha almeno un esempio concreto, non solo affermazioni generiche",
+    "Ho inserito un'antitesi vera (non di comodo) e l'ho confutata con un argomento, non con un'opinione",
+    "Ho usato connettivi logici per collegare i paragrafi (per questo, tuttavia, d'altra parte...)",
+    "La conclusione rilancia il discorso, non ripete semplicemente l'introduzione",
+    "Il testo ha una lunghezza adeguata (indicativamente 3-4 colonne)",
+    "Ho riletto controllando ortografia, punteggiatura e concordanze"
+  ];
+  return `
+  <div class="card">
+    <h2>Checklist finale prima della consegna</h2>
+    <p>Da spuntare mentalmente (o su carta) negli ultimi minuti della prova.</p>
+    <ul class="checklist">
+      ${voci.map(v=>`<li><input type="checkbox"><span>${v}</span></li>`).join("")}
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Errori più comuni da evitare</h2>
+    <ul>
+      <li><strong>Parafrasare invece di argomentare</strong> (Tipologia B): riassumere il testo-guida non basta, serve una tua tesi personale.</li>
+      <li><strong>Tema generico</strong> (Tipologia C): evita frasi come "è un argomento molto discusso oggi" senza mai prendere posizione.</li>
+      <li><strong>Antitesi finta</strong>: non introdurre un'obiezione debole solo per confutarla facilmente; sceglierne una credibile rende il testo più maturo.</li>
+      <li><strong>Conclusione-fotocopia</strong>: ripetere l'introduzione con altre parole è un'occasione persa; meglio rilanciare con una proposta o un'implicazione.</li>
+      <li><strong>Divagazione</strong>: ogni paragrafo deve essere riconducibile alla tesi iniziale; se non lo è, va tagliato o riformulato.</li>
+    </ul>
+  </div>
+  `;
+}
+
+function showTab(id){
+  document.querySelectorAll("nav button").forEach(b=> b.classList.toggle("active", b.dataset.tab===id));
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  if(id === "guida"){
+    main.innerHTML = buildGuida();
+  } else if(id === "checklist"){
+    main.innerHTML = buildChecklist();
+  } else {
+    main.innerHTML = buildYearTab(id);
+  }
+}
+
+buildNav();
+showTab("guida");
+</script>
+</body>
+</html>
